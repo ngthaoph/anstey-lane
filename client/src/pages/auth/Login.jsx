@@ -38,6 +38,7 @@ function Login() {
     // API Call to Write User Data
     try {
       const response = await authService.login(user);
+
       loginSaveUser(response.data);
       navigate("/dashboard");
     } catch (err) {

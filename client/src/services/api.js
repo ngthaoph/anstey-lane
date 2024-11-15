@@ -43,6 +43,6 @@ export function setHeaderToken() {
     delete api.defaults.headers.common["Authorization"];
   }
 }
-
+setHeaderToken();
 // 4. EXPORT OUR CUSTOM AXIOS
 export default api;

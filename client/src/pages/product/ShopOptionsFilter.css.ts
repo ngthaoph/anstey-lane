@@ -2,13 +2,10 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
 
 export const shopFilter = style({
-  display: "flex",
   flexWrap: "wrap",
-  margin: "0 -30px",
-  paddingLeft: "100px",
+
   marginBottom: "20px",
   boxSizing: "border-box",
-  justifyContent: "space-between",
 });
 
 export const ulFilter = style({

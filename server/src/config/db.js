@@ -7,6 +7,7 @@ try {
 
   // 1. GRANT ADMIN ACCESS TO FIREBASE SERVICES
   let serviceAccountKey = config.db.serviceAccountKey;
+  console.log(serviceAccountKey);
   const firebaseAppOptions = {
     credential: admin.credential.cert(serviceAccountKey),
     storageBucket: config.db.storageBucket,

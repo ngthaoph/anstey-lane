@@ -24,7 +24,8 @@ export function AuthProvier({ children }) {
   const loginSaveUser = async (data) => {
     const { token } = data; //token is as a string "token": "string"
     console.log(data);
-    localStorage.setItem("token", JSON.stringify(user));
+
+    localStorage.setItem("token", JSON.stringify(token));
     setUser(jwtDecode(token));
   };
 

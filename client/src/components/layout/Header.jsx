@@ -55,7 +55,7 @@ const Header = () => {
 
               {!user && (
                 <Nav.Link className={styles.navLink} as={Link} to="/login">
-                  <VscAccount />
+                  Log&nbsp;In
                 </Nav.Link>
               )}
               {user && (
@@ -63,7 +63,7 @@ const Header = () => {
                   Dashboard
                 </Nav.Link>
               )}
-              {user && <AlButton></AlButton>}
+              {user && <AlButton onClick={() => logout()}>Log out</AlButton>}
 
               <button>
                 <img src={shoppingCart} />

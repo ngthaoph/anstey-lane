@@ -10,6 +10,7 @@ export const navbar = style({
 });
 export const logo = style({
   width: 170,
+  marginLeft: "auto",
 });
 
 export const navLink = style({

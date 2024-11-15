@@ -14,4 +14,8 @@ export const productCard = style({
 
   display: "flex",
   flexDirection: "column",
+  transition: "all ease-in-out 0.3s",
+  ":hover": {
+    transform: "scale(1.05)",
+  },
 });

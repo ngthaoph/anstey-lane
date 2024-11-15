@@ -57,6 +57,7 @@ module.exports = {
     const tokenExpireTime = 60 * 60 * 24; // 1 day :)
 
     const token = jwt.sign(payload, secret, { expiresIn: tokenExpireTime });
+    console.log(token);
     return token;
   },
 };

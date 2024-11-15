@@ -11,7 +11,7 @@ module.exports = {
       name: Joi.string().required(),
 
       origin: Joi.string().required(),
-      price: Joi.string().required(),
+      price: Joi.number().required(),
       tasting: Joi.string().required(),
       base: Joi.string().required(),
       image: Joi.any(),

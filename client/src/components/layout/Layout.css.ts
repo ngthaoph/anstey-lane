@@ -16,4 +16,5 @@ export const app = style({
 export const appContent = style({
   // margin: `${vars.space["2x"]}`,
   flex: 1, //0 and 1
+  width: "100%",
 });

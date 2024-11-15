@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../hooks/useAuth";
 import ProductsList from "../../components/features/products/ProductsList";
 import { Container, Card, Col, Row } from "react-bootstrap";
 import axios from "axios";
@@ -6,31 +9,44 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 import * as styles from "./CollectionPage.css";
-import Product from "./Product";
+
 import { Dots } from "@holmesdev/ponder-spinners";
 
 import AlProductCard from "../../components/common/AlProductCard";
 import productService from "../../services/productService";
 import ShopOptionsFilter from "./ShopOptionsFilter";
+import AlButton from "../../components/common/AlButton";
 
 function ProductsPage() {
   // PRODUCTS STATEs
   const [products, setProducts] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("espresso");
+  const handleSelectedCategory = (category) => {
+    setSelectedCategory(category);
+  };
 
   const [loading, setLoading] = useState(true); //it needs to loads something - making a call to the api
   const [error, setError] = useState(false);
-  // console.log(productService.getByBase(products.base.filter));
 
-  const handleGetAllProducts = async () => {
-    // const response = await axios("/api/products", products);
-    // await productService.getAll();
-    const response = await productService.getAll(products);
-    const data = response.data;
-    console.log(data);
-
-    setProducts(data);
-    setLoading(false);
-  };
+  const { logInSaveUser } = useAuth();
+  const navigate = useNavigate();
+  //react query
+  const { isPending, errorQuery, data } = useQuery({
+    queryKey: ["products", `${selectedCategory}`],
+    queryFn: async () => {
+      try {
+        const response = await productService.getAll(products);
+        setProducts(response.data);
+        setLoading(false);
+      } catch (error) {
+        setError(error);
+      }
+    },
+  });
+  const baseEspresso = products.filter(
+    (product) => product.base === "espresso"
+  );
+  console.log(baseEspresso);
 
   function handleGetProductById(id) {
     // console.log("Get product by id:", id);
@@ -38,14 +54,7 @@ function ProductsPage() {
     console.log(product.id);
     return product;
   }
-  // const handleGetProductsByBase = async (base) => {
-  //   const response = await productService.getByBase(products);
-  //   const data = response.data;
-  //   console.log(data);
-  //   setProducts(data);
-  //   setLoading(false);
-  // };
-  // handleGetProductsByBase();
+
   if (error) {
     return (
       <div>
@@ -55,19 +64,23 @@ function ProductsPage() {
     );
   }
 
-  useEffect(() => {
-    handleGetAllProducts();
-  }, []);
-
   return (
-    <>
+    <div className={styles.container}>
       <ShopOptionsFilter
         baseOptions={["all", "espresso", "decaf", "filter", "sale"]}
       />
+      {logInSaveUser && (
+        <AlButton onClick={() => navigate("/store/product")}>
+          Add Product
+        </AlButton>
+      )}
+
+      <p style={{ alignItems: "center" }}>SHOWING {products.length} RESULTS</p>
+
       {loading ? (
         <Dots />
       ) : (
-        <Container className={styles.container}>
+        <Container className={styles.collectionContainer}>
           {products.map((product) => (
             <Link
               style={{
@@ -75,8 +88,6 @@ function ProductsPage() {
               }}
               key={product.id}
               to={`/store/products/product/${product.id}`}
-              
-              
             >
               <AlProductCard
                 key={product.id}
@@ -89,7 +100,7 @@ function ProductsPage() {
           ))}
         </Container>
       )}
-    </>
+    </div>
   );
 }
 

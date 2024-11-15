@@ -1,6 +1,6 @@
 import React from "react";
 import useAuth from "../../hooks/useAuth";
-import MbCard from "../../components/common/AlCard";
+import AlCard from "../../components/common/AlCard";
 import AlButton from "../../components/common/AlButton";
 
 function Dashboard() {
@@ -9,20 +9,23 @@ function Dashboard() {
     return <p>Cannot Retrieve User</p>;
   }
   return (
-    <MbCard title="Profile">
+    <AlCard title="Profile">
       <div>
         <h2>Welcome onboard</h2>
       </div>
       <p>Your Email: {user.email}</p>
       <p>User status: {user.isAdmin ? "Admin" : "Standard"}</p>
-      <AlButton
-        onClick={() => {
-          logout;
-        }}
-      >
-        Close
-      </AlButton>
-    </MbCard>
+
+      {user && (
+        <AlButton
+          onClick={() => {
+            logout();
+          }}
+        >
+          Log Out
+        </AlButton>
+      )}
+    </AlCard>
   );
 }
 

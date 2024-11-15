@@ -25,6 +25,11 @@ function del(id) {
   return api.delete("/api/products/" + id);
 }
 
+async function getUnder60() {
+  const response = await api.get("/api/products/sale");
+  console.log(response?.data);
+  return response;
+}
 async function getByBase(base) {
   const response = await api.get("api/products/product/" + base);
   console.log(response?.data);
@@ -61,6 +66,7 @@ const productService = {
   put,
   del,
   getByBase,
+  getUnder60,
 };
 
 export default productService;

@@ -3,6 +3,7 @@ import { ToastContainer, Slide } from "react-toastify";
 
 import Header from "./Header";
 import Footer from "./Footer";
+
 import * as styles from "./Layout.css";
 
 const Layout = () => (
@@ -22,7 +23,7 @@ const Layout = () => (
       transition={Slide}
       theme="colored"
     />
-    
+
     <Header />
     {/* Wrap all content in column-direction flexbox */}
     <div className={styles.appContent}>

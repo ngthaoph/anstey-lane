@@ -10,3 +10,17 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("Satoshi-Regular.eot"); /* IE9 Compat Mode */
+  src: url("Satoshi-Regular.eot?#iefix") format("embedded-opentype"),
+    /* IE6-8 */ url("Satoshi-Regular.woff2") format("woff2"),
+    /* Modern browsers */ url("Satoshi-Regular.woff") format("woff"),
+    /* Older browsers */ url("Satoshi-Regular.ttf") format("truetype"),
+    /* Non-Webkit browsers */ url("Satoshi-Regular.svg#Satoshi-Regular")
+      format("svg"); /* iOS 4.2 and below */
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}

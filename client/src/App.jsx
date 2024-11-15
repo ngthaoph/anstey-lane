@@ -18,39 +18,49 @@ import Signup from "./pages/auth/Signup";
 import AddProduct from "./pages/product/AddProduct";
 import EditProduct from "./pages/product/EditProduct";
 
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
+
 function App() {
   return (
-    <Routes>
-      {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="/about" element={<About />} />
-        {/* AUTH */}
-        <Route path="signup" element={<Signup />} />
-        <Route path="login" element={<Login />} />
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/about" element={<About />} />
+          {/* AUTH */}
+          <Route path="signup" element={<Signup />} />
+          <Route path="login" element={<Login />} />
 
-        {/*PRIVATE ROUTE*/}
+          {/*PRIVATE ROUTE*/}
 
-        <Route element={<PrivateRoutes />}>
-          <Route path="dashboard" element={<Dashboard />} />
-        </Route>
+          <Route element={<PrivateRoutes />}>
+            <Route path="dashboard" element={<Dashboard />} />
+          </Route>
 
-        {/* PRODUCTS 
+          {/* PRODUCTS 
         store/products; 
         store/products/clearance*/}
-        <Route path="/store">
-          <Route path="/store/products" element={<CollectionPage />} />
-          <Route path={"/store/products/product/:id"} element={<Product />} />
-          <Route element={<PrivateRoutes />}>
-            <Route path="/store/product" element={<AddProduct />} />
-            <Route path="/store/product/edit/:id" element={<EditProduct />} />
+          <Route path="/store">
+            <Route path="/store/products" element={<CollectionPage />} />
+            <Route path={"/store/products/product/:id"} element={<Product />} />
+            <Route element={<PrivateRoutes />}>
+              <Route path="/store/product" element={<AddProduct />} />
+              <Route path="/store/product/edit/:id" element={<EditProduct />} />
+            </Route>
           </Route>
-        </Route>
 
-        {/* ERROR PAGES */}
-        <Route path="*" element={<NotFound />} />
-      </Route>
-    </Routes>
+          {/* ERROR PAGES */}
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </QueryClientProvider>
   );
 }
 

@@ -3,7 +3,7 @@ import twColors from "tailwindcss/colors";
 
 export const root = createGlobalTheme(":root", {
   fonts: {
-    brand: "Karla,  Montserrat, apple-system, sans-serif",
+    brand: "Satoshi,  Montserrat, apple-system, sans-serif",
     body: "Roboto, Open Sans, apple-system, sans-serif",
   },
   colors: {

@@ -8,7 +8,7 @@ const auth = (req, res, next) => {
     return ApiError.denyAccess("No token prodived");
   } else {
     //token in header - must test if valid token
-    token.subString(7, token.length); //remove "bearer"
+    token.substring(7, token.length); //remove "bearer"
   }
   try {
     //test the token in header is valid (bad secret or expired)

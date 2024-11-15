@@ -11,7 +11,8 @@ module.exports = () => {
   // GET ALL Products: /api/products/
   router.get("/", ProductController.getAllProducts);
 
-  // GET onSale Products
+  //GET BY COMPOSITE INDEX
+  router.get("/sale", ProductController.getOnSale);
 
   // POST Products
   //the order matters so we have to use array
@@ -22,7 +23,7 @@ module.exports = () => {
       FilePolicy.filePayloadExists,
       FilePolicy.fileSizeLimiter,
       FilePolicy.fileExtLimiter([".png", ".jpg", ".gif", ".jpeg"]),
-      // VerifyAuth.auth,
+      VerifyAuth.auth,
       fileServerUpload,
     ],
     ProductController.postProducts
