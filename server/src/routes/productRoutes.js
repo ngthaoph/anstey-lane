@@ -17,7 +17,7 @@ module.exports = () => {
   // POST Products
   //the order matters so we have to use array
   router.post(
-    "/product",
+    "/",
     [
       ProductPolicy.validateProduct,
       FilePolicy.filePayloadExists,
@@ -31,11 +31,11 @@ module.exports = () => {
 
   // GET BY ID Products
   //localhost:5005/api/products/:id
-  router.get("/:id", ProductController.getProducts);
+  router.get("/product/:id", ProductController.getProducts);
 
   //GET BY BASE PRODUCTS'
   //localhost:5005/api/products/base
-  router.get("/product/:base", ProductController.getProductsByBase);
+  router.get("/:base", ProductController.getProductsByBase);
 
   // UPDATE BY ID Products
   //localhost:5005/api/products/9S7Tvrfyd6hKJ6q02veP
