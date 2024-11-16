@@ -157,25 +157,24 @@ module.exports = {
   },
   //GET BY PRODUCT BASE
   async getProductsByBase(req, res, next) {
-    console.log("Hello");
-    // const { base } = req.params;
-    // const productRef = db.collection("products");
-    // const snapshot = await productRef.get();
-    // let products = [];
-    // snapshot.forEach((doc) => {
-    //   if (doc.data().base === base) {
-    //     products.push({
-    //       id: doc.id,
-    //       name: doc.data().name,
-    //       origin: doc.data().origin,
-    //       price: doc.data().price,
-    //       base: doc.data().base,
-    //       tasting: doc.data().tasting,
-    //       image: doc.data().image,
-    //     });
-    //   }
-    // });
-    // res.send(products);
+    const { base } = req.params;
+    const productRef = db.collection("products");
+    const snapshot = await productRef.get();
+    let products = [];
+    snapshot.forEach((doc) => {
+      if (doc.data().base === base) {
+        products.push({
+          id: doc.id,
+          name: doc.data().name,
+          origin: doc.data().origin,
+          price: doc.data().price,
+          base: doc.data().base,
+          tasting: doc.data().tasting,
+          image: doc.data().image,
+        });
+      }
+    });
+    res.send(products);
   },
   async putProductById(req, res, next) {
     // 1. FILE STORAGE UPLOADS

@@ -3,7 +3,11 @@ import * as styles from "./ShopOptionsFilter.css";
 import productService from "../../services/productService";
 import axios from "axios";
 
-function ShopOptionsFilter({ baseOptions }) {
+function ShopOptionsFilter({
+  baseOptions,
+  handleSelectedCategory,
+  selectedCategory,
+}) {
   const [activeFilter, setActiveFilter] = useState();
   //set active filter by clicking on the filter
   const handleFilter = (index) => {
@@ -14,7 +18,11 @@ function ShopOptionsFilter({ baseOptions }) {
     <div className={styles.shopFilter}>
       <ul className={styles.ulFilter}>
         {baseOptions.map((filter) => (
-          <li key={filter} className={styles.liFilter}>
+          <li
+            key={filter}
+            className={styles.liFilter}
+            onClick={() => handleSelectedCategory(filter)}
+          >
             <a
               className={`${styles.aLink} ${
                 activeFilter === filter ? styles.activeLink : ""

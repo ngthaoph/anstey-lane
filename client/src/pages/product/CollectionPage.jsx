@@ -20,8 +20,9 @@ import AlButton from "../../components/common/AlButton";
 function ProductsPage() {
   // PRODUCTS STATEs
   const [products, setProducts] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("espresso");
+  const [selectedCategory, setSelectedCategory] = useState();
   const handleSelectedCategory = (category) => {
+    console.log(category);
     setSelectedCategory(category);
   };
 
@@ -35,7 +36,10 @@ function ProductsPage() {
     queryKey: ["products", { base: "filter" }],
     queryFn: async () => {
       try {
-        const response = await productService.getAll(products);
+        // const response = await productService.getAll(products);
+        const response = await axios(
+          "http://localhost:5005/api/products/espresso"
+        );
         setProducts(response.data);
         setLoading(false);
       } catch (error) {
@@ -68,6 +72,8 @@ function ProductsPage() {
     <div className={styles.container}>
       <ShopOptionsFilter
         baseOptions={["all", "espresso", "decaf", "filter", "sale"]}
+        selectedCategory={selectedCategory}
+        handleSelectedCategory={handleSelectedCategory}
       />
       {logInSaveUser && (
         <AlButton onClick={() => navigate("/store/product")}>
