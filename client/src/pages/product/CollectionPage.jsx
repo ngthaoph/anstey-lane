@@ -33,8 +33,11 @@ function ProductsPage() {
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
+    const category = `${
+      selectedCategory === "all" ? "" : `/${selectedCategory}`
+    }`;
     const response = await axios.get(
-      `http://localhost:5005/api/products/${selectedCategory}`
+      `http://localhost:5005/api/products${category}`
     );
     console.log(response.data);
     setLoading(false);

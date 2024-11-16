@@ -32,7 +32,7 @@ function Product() {
 
   const fetchProduct = async () => {
     try {
-      const response = await axios.get(`/api/products/${id}`); // Ensure this API is correct
+      const response = await axios.get(`/api/products/product/${id}`); // Ensure this API is correct
       const fetchedData = await response.data;
       console.log(fetchedData);
       setProduct((prev) => {
