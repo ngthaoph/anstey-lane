@@ -8,7 +8,7 @@ import { capitalizeFirstLetter } from "../../utils/readUtils.js";
 function AlProductCard({ name, price, tasting, image, base }) {
   return (
     <Card className={styles.productCard}>
-      <Card.Img variant="top" src={image} />
+      <Card.Img className={styles.productImage} variant="top" src={image} />
       <Card.Title>{capitalizeFirstLetter(name)}</Card.Title>
 
       <Card.Text>{base} roast</Card.Text>

@@ -14,6 +14,8 @@ export const productCard = style({
 
   display: "flex",
   flexDirection: "column",
+});
+export const productImage = style({
   transition: "all ease-in-out 0.3s",
   ":hover": {
     transform: "scale(1.05)",

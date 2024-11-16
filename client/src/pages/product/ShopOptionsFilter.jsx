@@ -10,9 +10,6 @@ function ShopOptionsFilter({
 }) {
   const [activeFilter, setActiveFilter] = useState();
   //set active filter by clicking on the filter
-  const handleFilter = (index) => {
-    setActiveFilter(index);
-  };
 
   return (
     <div className={styles.shopFilter}>
@@ -23,11 +20,7 @@ function ShopOptionsFilter({
             className={styles.liFilter}
             onClick={() => handleSelectedCategory(filter)}
           >
-            <a
-              className={`${styles.aLink} ${
-                activeFilter === filter ? styles.activeLink : ""
-              }`}
-            >
+            <a className={styles.aLink}>
               {filter.charAt(0).toUpperCase() + filter.slice(1)}
             </a>
           </li>

@@ -30,6 +30,11 @@ export const liFilter = style({
   listStyle: "none",
   textAlign: "center",
   flexBasis: "  | auto",
+  ":hover": {
+    borderTop:
+      "2px solid #661a34" /* Add a red border-top when the filter is active */,
+    color: "#007bff" /* Optional: change text color for active state */,
+  },
 });
 
 export const aLink = style({
@@ -38,9 +43,4 @@ export const aLink = style({
   width: "100%",
   color: "#2b2c30",
   textDecoration: "none",
-  ":active": {
-    borderTop:
-      "2px solid red" /* Add a red border-top when the filter is active */,
-    color: "#007bff" /* Optional: change text color for active state */,
-  },
 });

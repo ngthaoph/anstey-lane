@@ -76,7 +76,7 @@ function ProductsPage() {
         </AlButton>
       )}
 
-      {/* <p style={{ alignItems: "center" }}>SHOWING {products.length} RESULTS</p> */}
+      <p style={{ alignItems: "center" }}>SHOWING {products?.length} RESULTS</p>
 
       {loading ? (
         <Dots />
