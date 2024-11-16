@@ -19,7 +19,7 @@ import AlButton from "../../components/common/AlButton";
 
 function ProductsPage() {
   // PRODUCTS STATEs
-  const [products, setProducts] = useState([]);
+
   const [selectedCategory, setSelectedCategory] = useState();
   const handleSelectedCategory = (category) => {
     console.log(category);
@@ -31,35 +31,25 @@ function ProductsPage() {
 
   const { logInSaveUser } = useAuth();
   const navigate = useNavigate();
+
+  const fetchProducts = async () => {
+    const response = await axios.get(`http://localhost:5005/api/products`);
+    console.log(response.data);
+    setLoading(false);
+    return response?.data;
+  };
+
   //react query
-  const { isPending, errorQuery, data } = useQuery({
-    queryKey: ["products", { base: "filter" }],
-    queryFn: async () => {
-      try {
-        // const response = await productService.getAll(products);
-        const response = await axios(
-          "http://localhost:5005/api/products/espresso"
-        );
-        setProducts(response.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-      }
-    },
+  const {
+    isPending,
+    errorQuery,
+    data: products,
+  } = useQuery({
+    queryKey: ["products"],
+    queryFn: () => fetchProducts(),
   });
-  const baseEspresso = products.filter(
-    (product) => product.base === "espresso"
-  );
-  console.log(baseEspresso);
 
-  function handleGetProductById(id) {
-    // console.log("Get product by id:", id);
-    const product = products.find((product) => product.id === id);
-    console.log(product.id);
-    return product;
-  }
-
-  if (error) {
+  if (errorQuery) {
     return (
       <div>
         <p>Error loading page ...</p>
@@ -81,13 +71,13 @@ function ProductsPage() {
         </AlButton>
       )}
 
-      <p style={{ alignItems: "center" }}>SHOWING {products.length} RESULTS</p>
+      {/* <p style={{ alignItems: "center" }}>SHOWING {products.length} RESULTS</p> */}
 
       {loading ? (
         <Dots />
       ) : (
         <Container className={styles.collectionContainer}>
-          {products.map((product) => (
+          {products?.map((product) => (
             <Link
               style={{
                 textDecoration: "none",
