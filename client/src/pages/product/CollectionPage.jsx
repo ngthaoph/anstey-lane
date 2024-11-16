@@ -20,7 +20,7 @@ import AlButton from "../../components/common/AlButton";
 function ProductsPage() {
   // PRODUCTS STATEs
 
-  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedCategory, setSelectedCategory] = useState("all");
   const handleSelectedCategory = (category) => {
     console.log(category);
     setSelectedCategory(category);

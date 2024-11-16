@@ -12,6 +12,7 @@
   "dependencies": {
     "@holmesdev/ponder-spinners": "^1.0.25",
     "@tanstack/react-query": "^5.60.2",
+    "@tanstack/react-query-devtools": "^5.60.5",
     "@vanilla-extract/css": "^1.15.3",
     "axios": "^1.7.2",
     "bootstrap": "^5.3.3",

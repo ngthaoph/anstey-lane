@@ -23,12 +23,14 @@ import {
   QueryClientProvider,
   useQuery,
 } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <Routes>
         {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
         <Route path="/" element={<Layout />}>
