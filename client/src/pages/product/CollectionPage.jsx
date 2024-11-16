@@ -33,7 +33,9 @@ function ProductsPage() {
   const navigate = useNavigate();
 
   const fetchProducts = async () => {
-    const response = await axios.get(`http://localhost:5005/api/products`);
+    const response = await axios.get(
+      `http://localhost:5005/api/products/${selectedCategory}`
+    );
     console.log(response.data);
     setLoading(false);
     return response?.data;
@@ -45,8 +47,8 @@ function ProductsPage() {
     errorQuery,
     data: products,
   } = useQuery({
-    queryKey: ["products"],
-    queryFn: () => fetchProducts(),
+    queryKey: ["products", selectedCategory],
+    queryFn: () => fetchProducts(selectedCategory),
   });
 
   if (errorQuery) {
