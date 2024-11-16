@@ -32,7 +32,7 @@ function ProductsPage() {
   const navigate = useNavigate();
   //react query
   const { isPending, errorQuery, data } = useQuery({
-    queryKey: ["products", `${selectedCategory}`],
+    queryKey: ["products", { base: "filter" }],
     queryFn: async () => {
       try {
         const response = await productService.getAll(products);
