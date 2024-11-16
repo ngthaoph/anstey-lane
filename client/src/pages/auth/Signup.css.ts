@@ -9,7 +9,7 @@ export const container = style({
 });
 
 export const leadCard = style({
-  background: vars.colors.primary,
+  background: vars.colors.grey200,
   minWidth: "25w",
   color: vars.colors.complementary,
   margin: "auto",

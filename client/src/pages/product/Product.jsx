@@ -7,10 +7,14 @@ import AlButton from "../../components/common/AlButton";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import * as styles from "./Product.css";
 import { Container, Form, Card } from "react-bootstrap";
-import { priceFormatter, capitalizeFirstLetter } from "../../utils/readUtils";
+import {
+  priceFormatter,
+  capitalizeFirstLetter,
+  capitalizeAllLetter,
+} from "../../utils/readUtils";
 import useAuth from "../../hooks/useAuth";
 
-import { GiCoffeePot } from "react-icons/gi";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import productService from "../../services/productService";
 
 function Product() {
@@ -24,6 +28,7 @@ function Product() {
     price: "",
     image: "",
     tasting: "",
+    base: "",
   });
   const { id } = product;
 
@@ -82,6 +87,16 @@ function Product() {
         <img src={product.image} alt={product.name} />
       </div>
       <div className={styles.productWrapper}>
+        {/*BASE INFO - GO BACK TAB*/}
+        <div className={styles.goBackTab}>
+          <a style={{ textDecoration: "none" }} href={"/store/products"}>
+            <div>
+              <MdOutlineKeyboardArrowLeft />
+            </div>
+
+            <p>{capitalizeAllLetter(product.base)}</p>
+          </a>
+        </div>
         {/*Product name */}
         <h1>{capitalizeFirstLetter(product.name)}</h1>
 

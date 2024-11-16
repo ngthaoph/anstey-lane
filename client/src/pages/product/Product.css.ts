@@ -26,3 +26,10 @@ export const productWrapper = style({
   padding: "50px 50px",
   flex: 1,
 });
+export const goBackTab = style({
+  borderBottom: "1px solid",
+  paddingBottom: "6px",
+  marginBottom: "40px",
+  fontSize: "15x",
+  display: "flex",
+});

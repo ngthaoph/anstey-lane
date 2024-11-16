@@ -15,8 +15,8 @@ export const catergoryContainer = style({
 
 export const collectionContainer = style({
   display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "space-between",
+  flex: "wrap",
+
   margin: "auto",
   padding: "15px",
   boxSizing: "border-box",
