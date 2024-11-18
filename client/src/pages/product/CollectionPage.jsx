@@ -26,9 +26,6 @@ function ProductsPage() {
     setSelectedCategory(category);
   };
 
-  const [loading, setLoading] = useState(true); //it needs to loads something - making a call to the api
-  const [error, setError] = useState(false);
-
   const { logInSaveUser } = useAuth();
   const navigate = useNavigate();
 
@@ -40,21 +37,27 @@ function ProductsPage() {
       `http://localhost:5005/api/products${category}`
     );
     console.log(response.data);
-    setLoading(false);
-    return response?.data;
+
+    return response.data;
   };
 
   //react query
   const {
-    isPending,
-    errorQuery,
+    isLoading,
+    isError,
     data: products,
   } = useQuery({
     queryKey: ["products", selectedCategory],
     queryFn: () => fetchProducts(selectedCategory),
   });
-
-  if (errorQuery) {
+  if (isLoading) {
+    return (
+      <div>
+        <Dots />
+      </div>
+    );
+  }
+  if (isError === true) {
     return (
       <div>
         <p>Error loading page ...</p>
@@ -76,13 +79,13 @@ function ProductsPage() {
         </AlButton>
       )}
 
-      <p style={{ alignItems: "center" }}>SHOWING {products?.length} RESULTS</p>
+      <p style={{ alignItems: "center" }}>SHOWING {products.length} RESULTS</p>
 
-      {loading ? (
+      {isLoading ? (
         <Dots />
       ) : (
         <Container className={styles.collectionContainer}>
-          {products?.map((product) => (
+          {products.map((product) => (
             <Link
               style={{
                 textDecoration: "none",

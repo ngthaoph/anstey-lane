@@ -31,5 +31,4 @@ export const goBackTab = style({
   paddingBottom: "6px",
   marginBottom: "40px",
   fontSize: "15x",
-  display: "flex",
 });
