@@ -16,6 +16,5 @@ export const button = style({
   padding: "12px 42px 18px",
 
   textTransform: "uppercase",
-
-  // marginTop: "auto",
+  borderRadius: "34px",
 });

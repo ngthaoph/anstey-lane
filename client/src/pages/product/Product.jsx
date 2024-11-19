@@ -17,20 +17,12 @@ import useAuth from "../../hooks/useAuth";
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import productService from "../../services/productService";
-
+import ProductForm from "./ProductForm";
 function Product() {
-  const navigate = useNavigate();
+  let navigate = useNavigate();
+  let navigatePage = useNavigate();
   const { user } = useAuth();
   let { id } = useParams(); // Get the data ID from the URL
-  // const [data, setProduct] = useState({
-  //   id: params.id,
-  //   name: "",
-
-  //   price: "",
-  //   image: "",
-  //   tasting: "",
-  //   base: "",
-  // });
 
   const fetchProduct = async () => {
     const response = await axios.get(`/api/products/product/${id}`); // Ensure this API is correct
@@ -43,7 +35,6 @@ function Product() {
     queryKey: ["product", id],
     queryFn: () => fetchProduct(id),
   });
-  console.log(data);
 
   // DELETE BUTTON FUNCTION
   const handleDelete = async (e) => {
@@ -82,7 +73,7 @@ function Product() {
               display: "flex",
               color: "inherit",
             }}
-            to={`/store/products/${data.base}`}
+            onClick={() => navigate(-1)}
           >
             <div>
               <MdOutlineKeyboardArrowLeft />
@@ -109,6 +100,9 @@ function Product() {
               <AlButton onClick={handleDelete}>Delete</AlButton>
             </>
           )}
+        </div>
+        <div className={styles.productFormContainer}>
+          <ProductForm />
         </div>
       </div>
     </div>

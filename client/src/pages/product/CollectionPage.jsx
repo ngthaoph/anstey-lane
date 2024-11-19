@@ -53,7 +53,7 @@ function ProductsPage() {
   if (isLoading) {
     return (
       <div>
-        <Dots />
+        <Dots style={{ alignItems: "center" }} />
       </div>
     );
   }
