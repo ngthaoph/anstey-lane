@@ -65,9 +65,9 @@ const Header = () => {
               )}
               {user && <AlButton onClick={() => logout()}>Log out</AlButton>}
 
-              <button>
+              <Nav.Link className={styles.navLink} as={Link} to="/cart">
                 <img src={shoppingCart} />
-              </button>
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

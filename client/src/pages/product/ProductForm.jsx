@@ -6,16 +6,13 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { Form, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 
-function ProductForm() {
+function ProductForm({ handleNewCart }) {
   const sizeOptions = ["250g", "1kg"];
   const grindOptions = ["filter", "decaf", "whole beans"];
   const [isLoading, setIsLoading] = useState(true);
 
-  const handleQuantity = (delta) => {
+  const handleQuantity = (delta, e) => {
     let quantity = watch("quantity");
-    if ((quantity = 0)) {
-      return null;
-    }
 
     setValue("quantity", quantity + delta);
   };
@@ -38,6 +35,7 @@ function ProductForm() {
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
+    handleNewCart([data]);
     setIsLoading(false);
   });
 

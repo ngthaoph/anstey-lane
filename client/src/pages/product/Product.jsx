@@ -18,7 +18,7 @@ import useAuth from "../../hooks/useAuth";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import productService from "../../services/productService";
 import ProductForm from "./ProductForm";
-function Product() {
+function Product({ handleNewCart }) {
   let navigate = useNavigate();
   let navigatePage = useNavigate();
   const { user } = useAuth();
@@ -54,6 +54,10 @@ function Product() {
   const handleEdit = () => {
     navigate(`/store/product/edit/${id}`);
   };
+  //ADD PRODUCT TO  IN APP
+  function handleAddToCart() {
+    if (productCount === 0) return;
+  }
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error loading product details.</div>;
 
@@ -101,7 +105,7 @@ function Product() {
           )}
         </div>
         <div className={styles.productFormContainer}>
-          <ProductForm />
+          <ProductForm handleNewCart={handleNewCart} />
         </div>
       </div>
     </div>

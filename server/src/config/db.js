@@ -9,7 +9,7 @@ try {
   let serviceAccountKey;
   //different setups based on environment
   if (config.env === "development" || config.env === "production") {
-    serviceAccountKey = config.db.google_account_credentials;
+    serviceAccountKey = require(config.db.google_account_credentials);
   } else if (config.env === "preview") {
     // DOCS: https://firebase.google.com/docs/reference/admin/node/firebase-admin.app
     serviceAccountKey = {

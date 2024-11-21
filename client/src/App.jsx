@@ -1,5 +1,6 @@
 // Import npm packages
 import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
 
 // Import pages
 import Home from "./pages/Home";
@@ -7,6 +8,7 @@ import CollectionPage from "./pages/product/CollectionPage";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Product from "./pages/product/Product";
+import Cart from "./components/features/cart/Cart";
 
 // Import components
 import Layout from "./components/layout/Layout";
@@ -28,17 +30,27 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient();
 
 function App() {
+  const [cartProducts, setCartProducts] = useState([]);
+  //FUNCTION TO ADD NEW ITEMS TO NEW OR EXISTING CART
+  function handleNewCart(newProducts) {
+    setCartProducts((currrentProducts) => {
+      return [...currrentProducts, ...newProducts];
+    });
+  }
+  console.log(cartProducts);
+
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
       <Routes>
         {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
-        <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Layout cartProducts={cartProducts} />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           {/* AUTH */}
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
+          <Route path="cart" element={<Cart cartProducts={cartProducts} />} />
 
           {/*PRIVATE ROUTE*/}
 
@@ -51,7 +63,10 @@ function App() {
         store/products/clearance*/}
           <Route path="/store">
             <Route path="/store/products" element={<CollectionPage />} />
-            <Route path={"/store/products/product/:id"} element={<Product />} />
+            <Route
+              path={"/store/products/product/:id"}
+              element={<Product handleNewCart={handleNewCart} />}
+            />
             <Route element={<PrivateRoutes />}>
               <Route path="/store/product" element={<AddProduct />} />
               <Route path="/store/product/edit/:id" element={<EditProduct />} />
