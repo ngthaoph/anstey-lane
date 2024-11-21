@@ -51,14 +51,22 @@ app.use(apiErrorHandler);
 // TESTING/DEVELOPMENT
 // Ping DB & Set Port
 if (config.env === "development") {
-  // SETTING: DEVELOPMENT
-  dbPing.then(() => {
-    app.listen(config.port, () =>
-      console.log(`Development Server is running on port: ${config.port}`)
-    );
-  });
+  // DB Ping function (dev testing)
+  db.listCollections()
+    .then((collections) => {
+      debugStartup("Connected to Cloud Firestore");
+      for (let collection of collections) {
+        debugStartup(`DB collection: ${collection.id}`);
+      }
+    })
+    .then(() => {
+      app.listen(config.port, () =>
+        console.log(`Development Server is running on port: ${config.port}`)
+      );
+    });
+
+  // SETTING PORT IN PREVIEW/PROD
 } else {
-  // SETTING: PREVIEW/PRODUCTION
   app.listen(config.port, () =>
     console.log(`Production Server is running on port: ${config.port}`)
   );
