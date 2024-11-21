@@ -26,7 +26,6 @@ function Product() {
 
   const fetchProduct = async () => {
     const response = await axios.get(`/api/products/product/${id}`); // Ensure this API is correct
-    console.log(response.data);
 
     return response.data;
   };

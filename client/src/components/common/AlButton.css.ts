@@ -17,4 +17,8 @@ export const button = style({
 
   textTransform: "uppercase",
   borderRadius: "34px",
+  ":active": {
+    backgroundColor: "red",
+    color: "pink",
+  },
 });

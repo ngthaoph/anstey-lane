@@ -9,6 +9,7 @@
     "server": "nodemon src/index",
     "dev": "DEBUG=app* nodemon src/index",
     "devpc": "DEBUG=app* & nodemon src/index",
+    "preview": "DEBUG=app* node src/index",
     "client": "cd ../ && npm start --prefix client",
     "devstack": "concurrently -k \"npm run dev\" \"npm run client\"",
     "prodstack": "concurrently -k \"npm run prod\" \"npm run client\""

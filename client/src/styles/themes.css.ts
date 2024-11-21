@@ -12,7 +12,7 @@ export const root = createGlobalTheme(":root", {
     complementary: twColors.rose[900],
     brand: twColors.zinc[700],
     brandLight: twColors.rose[200],
-    brandDark: twColors.rose[900],
+    brandDark: twColors.pink[900],
 
     // Color tokens
     success: twColors.green[400],

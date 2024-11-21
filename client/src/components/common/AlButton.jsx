@@ -4,7 +4,14 @@ import { Button } from "react-bootstrap";
 import * as styles from "./AlButton.css";
 import PropTypes from "prop-types";
 
-function AlButton({ children, loadingState, onClick, outline, navbar }) {
+function AlButton({
+  children,
+  loadingState,
+  onClick,
+  outline,
+  navbar,
+  active,
+}) {
   return (
     <Button
       className={styles.button}
@@ -13,6 +20,7 @@ function AlButton({ children, loadingState, onClick, outline, navbar }) {
       disabled={loadingState ? 1 : 0}
       outline={outline ? 1 : 0}
       navbar={navbar ? 1 : 0}
+      active={active}
     >
       {children}
     </Button>
@@ -24,5 +32,7 @@ AlButton.propTypes = {
   outline: PropTypes.bool,
   navbar: PropTypes.bool,
   type: PropTypes.string,
+
+  active: PropTypes.bool,
 };
 export default AlButton;

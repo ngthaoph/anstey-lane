@@ -49,13 +49,17 @@ app.use(apiErrorHandler);
 
 // PORT listener
 // TESTING/DEVELOPMENT
-dbPing.then(() => {
-  app.listen(config.port, () => {
-    console.log(`Server is running on port: ${config.port}`);
+// Ping DB & Set Port
+if (config.env === "development") {
+  // SETTING: DEVELOPMENT
+  dbPing.then(() => {
+    app.listen(config.port, () =>
+      console.log(`Development Server is running on port: ${config.port}`)
+    );
   });
-});
-
-// PRODUCTION
-// app.listen(config.port, () => {
-//   console.log(`Server is running on port: ${config.port}`)
-// });
+} else {
+  // SETTING: PREVIEW/PRODUCTION
+  app.listen(config.port, () =>
+    console.log(`Production Server is running on port: ${config.port}`)
+  );
+}
