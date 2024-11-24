@@ -14,6 +14,7 @@ module.exports = {
     const snapshot = await productsRef
       // .where("base", "==", "espresso")
       .orderBy("name", "asc")
+
       .get();
 
     //2.check for emppty collection
@@ -121,7 +122,29 @@ module.exports = {
       return next(ApiError.internal("Failed to get product", err));
     }
   },
+  //  async getProducts(req, res, next) {
+  //   try {
+  //     const ids = req.params.ids.split(","); // Split the comma-separated IDs
+  //     const productRef = db.collection("products");
+  //     const productPromises = ids.map((id) => productRef.doc(id).get());
+  //     const docs = await Promise.all(productPromises);
 
+  //     const products = docs
+  //       .filter((doc) => doc.exists) // Filter out non-existent documents
+  //       .map((doc) => ({
+  //         id: doc.id,
+  //         ...doc.data(), // Spread the data object for cleaner mapping
+  //       }));
+
+  //     if (products.length === 0) {
+  //       return next(ApiError.notFound("No products found"));
+  //     }
+
+  //     res.send(products);
+  //   } catch (err) {
+  //     return next(ApiError.internal("Failed to get products", err));
+  //   }
+  // },
   // DELETE BY ID Products
   async deleteProductById(req, res, next) {
     // try {

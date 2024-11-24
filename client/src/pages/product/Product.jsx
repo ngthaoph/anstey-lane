@@ -107,7 +107,7 @@ function Product({ handleNewCart }) {
           )}
         </div>
         <div className={styles.productFormContainer}>
-          <ProductForm handleNewCart={handleNewCart} />
+          <ProductForm handleNewCart={handleNewCart} id={id} />
         </div>
       </div>
     </div>

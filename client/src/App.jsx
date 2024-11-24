@@ -37,7 +37,7 @@ function App() {
       return [...currrentProducts, ...newProducts];
     });
   }
-  console.log(cartProducts);
+  console.log("cartProducts:", cartProducts);
 
   return (
     <QueryClientProvider client={queryClient}>

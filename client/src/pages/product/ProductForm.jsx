@@ -6,7 +6,7 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { Form, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 
-function ProductForm({ handleNewCart }) {
+function ProductForm({ handleNewCart, id }) {
   const sizeOptions = ["250g", "1kg"];
   const grindOptions = ["filter", "decaf", "whole beans"];
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +21,6 @@ function ProductForm({ handleNewCart }) {
     setValue("size", size);
   };
   const handleGrind = (grind) => {
-    console.log(grind);
     setValue("grind", grind);
   };
 
@@ -35,89 +34,95 @@ function ProductForm({ handleNewCart }) {
 
   const onSubmit = handleSubmit((data) => {
     console.log(data);
-    handleNewCart([data]);
+    const product = [
+      {
+        ...data,
+        id: id,
+      },
+    ];
+    handleNewCart(product);
     setIsLoading(false);
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.container}>
-        <fieldset>
-          <legend>Size</legend>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.container}>
+          <fieldset>
+            <legend>Size</legend>
 
-          <span>
-            <AlButton
-              key={sizeOptions[0]}
-              type="button"
-              value={sizeOptions[0]}
-              onClick={() => handleSize(sizeOptions[0])}
-              active={watch("size") === sizeOptions[0] ? true : false}
-            >
-              {sizeOptions[0]}
-            </AlButton>
-            <AlButton
-              key={sizeOptions[1]}
-              type="button"
-              value={sizeOptions[1]}
-              onClick={() => handleSize(sizeOptions[1])}
-              active={watch("size") === sizeOptions[1] ? true : false}
-            >
-              {sizeOptions[1]}
-            </AlButton>
-          </span>
-        </fieldset>
-      </div>
+            <span>
+              <AlButton
+                key={sizeOptions[0]}
+                type="button"
+                value={sizeOptions[0]}
+                onClick={() => handleSize(sizeOptions[0])}
+                active={watch("size") === sizeOptions[0] ? true : false}
+              >
+                {sizeOptions[0]}
+              </AlButton>
+              <AlButton
+                key={sizeOptions[1]}
+                type="button"
+                value={sizeOptions[1]}
+                onClick={() => handleSize(sizeOptions[1])}
+                active={watch("size") === sizeOptions[1] ? true : false}
+              >
+                {sizeOptions[1]}
+              </AlButton>
+            </span>
+          </fieldset>
+        </div>
 
-      {/**/}
-      <div className={styles.container}>
-        <fieldset>
-          <legend>Grind</legend>
-          <span>
-            <AlButton
-              key={grindOptions[0]}
-              type="button"
-              value={grindOptions[0]}
-              onClick={() => handleGrind(grindOptions[0])}
-              active={watch("grind") === grindOptions[0] ? true : false}
-            >
-              {grindOptions[0]}
-            </AlButton>
-            <AlButton
-              key={grindOptions[1]}
-              type="button"
-              value={grindOptions[1]}
-              onClick={() => handleGrind(grindOptions[1])}
-              active={watch("grind") === grindOptions[1] ? true : false}
-            >
-              {grindOptions[1]}
-            </AlButton>
-            <AlButton
-              key={grindOptions[2]}
-              type="button"
-              value={grindOptions[2]}
-              onClick={() => handleGrind(grindOptions[2])}
-              active={watch("grind") === grindOptions[2] ? true : false}
-            >
-              {grindOptions[2]}
-            </AlButton>
-          </span>
-        </fieldset>
-      </div>
-      <div className={styles.container}>
-        <label htmlFor="quantity">Quantity</label>
-        <br />
-        <AlButton>
-          <FaMinus onClick={() => handleQuantity(-1)} />
+        {/**/}
+        <div className={styles.container}>
+          <fieldset>
+            <legend>Grind</legend>
+            <span>
+              <AlButton
+                key={grindOptions[0]}
+                type="button"
+                value={grindOptions[0]}
+                onClick={() => handleGrind(grindOptions[0])}
+                active={watch("grind") === grindOptions[0] ? true : false}
+              >
+                {grindOptions[0]}
+              </AlButton>
+              <AlButton
+                key={grindOptions[1]}
+                type="button"
+                value={grindOptions[1]}
+                onClick={() => handleGrind(grindOptions[1])}
+                active={watch("grind") === grindOptions[1] ? true : false}
+              >
+                {grindOptions[1]}
+              </AlButton>
+              <AlButton
+                key={grindOptions[2]}
+                type="button"
+                value={grindOptions[2]}
+                onClick={() => handleGrind(grindOptions[2])}
+                active={watch("grind") === grindOptions[2] ? true : false}
+              >
+                {grindOptions[2]}
+              </AlButton>
+            </span>
+          </fieldset>
+        </div>
+        <div className={styles.container}>
+          <label htmlFor="quantity">Quantity</label>
+          <br />
+          <div>
+            <FaMinus onClick={() => handleQuantity(-1)} />
 
-          {watch("quantity")}
+            {watch("quantity")}
 
-          <FaPlus onClick={() => handleQuantity(1)} />
-        </AlButton>
-      </div>
-      <AlButton type="submit">
-        {isLoading === true ? "Add to Cart" : "Added"}
-      </AlButton>
-    </form>
+            <FaPlus onClick={() => handleQuantity(1)} />
+          </div>
+        </div>
+        <AlButton type="submit">{isLoading ? "Add to Cart" : "Added"}</AlButton>
+      </form>
+    </div>
   );
 }
 
