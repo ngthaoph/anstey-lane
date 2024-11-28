@@ -44,13 +44,29 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
       <Routes>
         {/* MAIN LAYOUT WRAPPER & ROUTED CHILDREN */}
-        <Route path="/" element={<Layout cartProducts={cartProducts} />}>
+        <Route
+          path="/"
+          element={
+            <Layout
+              cartProducts={cartProducts}
+              setCartProducts={setCartProducts}
+            />
+          }
+        >
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
           {/* AUTH */}
           <Route path="signup" element={<Signup />} />
           <Route path="login" element={<Login />} />
-          <Route path="cart" element={<Cart cartProducts={cartProducts} />} />
+          <Route
+            path="cart"
+            element={
+              <Cart
+                cartProducts={cartProducts}
+                setCartProducts={setCartProducts}
+              />
+            }
+          />
 
           {/*PRIVATE ROUTE*/}
 

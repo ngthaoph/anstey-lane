@@ -6,18 +6,22 @@ export const container = style({
 
   flexDirection: "column",
   margin: "0 70px",
-  maxWidth: "1440px",
 });
 
-export const catergoryContainer = style({
+export const catergoryContainer = style({});
+
+export const resultNumber = style({
   display: "flex",
+  justifyContent: "center",
+  fontSize: "30px",
 });
 
 export const collectionContainer = style({
   display: "flex",
-  flex: "wrap",
 
-  margin: "auto",
-  padding: "15px",
+  padding: "0 15px",
+
   boxSizing: "border-box",
+  flexWrap: "wrap",
+  maxWidth: "100%",
 });

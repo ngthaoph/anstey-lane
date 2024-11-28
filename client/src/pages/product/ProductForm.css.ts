@@ -11,3 +11,11 @@ export const container = style({
   paddingBottom: "8px",
   marginBottom: "16px",
 });
+
+export const productQuantityBox = style({
+  display: "flex",
+  flexDirection: "row",
+  padding: "10px",
+  width: "120px",
+  justifyContent: "space-between",
+});

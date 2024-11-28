@@ -112,12 +112,14 @@ function ProductForm({ handleNewCart, id }) {
         <div className={styles.container}>
           <label htmlFor="quantity">Quantity</label>
           <br />
-          <div>
-            <FaMinus onClick={() => handleQuantity(-1)} />
-
-            {watch("quantity")}
-
-            <FaPlus onClick={() => handleQuantity(1)} />
+          <div className={styles.productQuantityBox}>
+            <div>
+              <FaMinus onClick={() => handleQuantity(-1)} />
+            </div>
+            <div>{watch("quantity")}</div>
+            <div>
+              <FaPlus onClick={() => handleQuantity(1)} />
+            </div>
           </div>
         </div>
         <AlButton type="submit">{isLoading ? "Add to Cart" : "Added"}</AlButton>

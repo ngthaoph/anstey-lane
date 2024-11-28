@@ -67,7 +67,9 @@ function Product({ handleNewCart }) {
     <div className={styles.container}>
       <div className={styles.productWrapper}>
         {/*Product photo */}
-        <img src={data.image} alt={data.name} />
+        <div style={{ width: "40%", margin: "auto" }}>
+          <img src={data.image} alt={data.name} />
+        </div>
       </div>
       <div className={styles.productWrapper}>
         {/*BASE INFO - GO BACK TAB*/}

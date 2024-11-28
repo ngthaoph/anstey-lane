@@ -25,10 +25,11 @@ export const productWrapper = style({
   width: "calc(50% - 20px)",
   padding: "50px 50px",
   flex: 1,
+  alignItems: "center",
 });
 export const goBackTab = style({
   borderBottom: "1px solid",
   paddingBottom: "6px",
   marginBottom: "40px",
-  fontSize: "15x",
+  fontSize: "25px",
 });

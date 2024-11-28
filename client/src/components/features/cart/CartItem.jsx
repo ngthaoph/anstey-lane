@@ -31,7 +31,7 @@ function CartItem({ product, cartProducts }) {
                 <tr>
                   <td>
                     {/*PRODUCT INFORAMTION */}
-                    <div style={{ display: "flex" }}>
+                    <div>
                       <div>
                         <img
                           style={{
@@ -42,7 +42,11 @@ function CartItem({ product, cartProducts }) {
                           src={product.image}
                           alt={product.name}
                         />
-                        {product.name}
+                      </div>
+                      {/*PRODUCT NAME */}
+                      <div>
+                        <div>{product.name}</div>
+                        <div>Remove</div>
                       </div>
                     </div>
                   </td>
