@@ -19,6 +19,15 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import productService from "../../services/productService";
 import ProductForm from "./ProductForm";
 function Product({ handleNewCart }) {
+  const [displayPrice, setDisplayPrice] = useState("250g");
+  const handleDisplayPrice = (size) => {
+    setDisplayPrice(() => {
+      if (size === "250g") return "250g";
+      if (size === "1kg") return "1kg";
+      return "0g";
+    });
+  };
+  console.log(displayPrice);
   let navigate = useNavigate();
   let navigatePage = useNavigate();
   const { user } = useAuth();
@@ -93,7 +102,11 @@ function Product({ handleNewCart }) {
         <h1>{capitalizeFirstLetter(data.name)}</h1>
 
         {/*Product price */}
-        <h1>{priceFormatter(Number(data.price))}</h1>
+        <h1>
+          {priceFormatter(
+            Number(data.quantity === "250g" ? data.price : data.price * 4)
+          )}
+        </h1>
         {/*Product description*/}
         <div>
           <span>{data.tasting}</span>
@@ -109,7 +122,13 @@ function Product({ handleNewCart }) {
           )}
         </div>
         <div className={styles.productFormContainer}>
-          <ProductForm handleNewCart={handleNewCart} id={id} />
+          <ProductForm
+            handleNewCart={handleNewCart}
+            id={id}
+            displayPrice={displayPrice}
+            setDisplayPrice={setDisplayPrice}
+            handleDisplayPrice={handleDisplayPrice}
+          />
         </div>
       </div>
     </div>

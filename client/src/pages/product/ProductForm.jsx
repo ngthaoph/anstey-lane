@@ -6,7 +6,13 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import { Form, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
 
-function ProductForm({ handleNewCart, id }) {
+function ProductForm({
+  handleNewCart,
+  id,
+  handleDisplayPrice,
+  displayPrice,
+  setDisplayPrice,
+}) {
   const sizeOptions = ["250g", "1kg"];
   const grindOptions = ["filter", "decaf", "whole beans"];
   const [isLoading, setIsLoading] = useState(true);
@@ -19,6 +25,7 @@ function ProductForm({ handleNewCart, id }) {
 
   const handleSize = (size) => {
     setValue("size", size);
+    handleDisplayPrice(size);
   };
   const handleGrind = (grind) => {
     setValue("grind", grind);
@@ -26,7 +33,7 @@ function ProductForm({ handleNewCart, id }) {
 
   const { control, handleSubmit, watch, setValue, register } = useForm({
     defaultValues: {
-      size: "",
+      size: "250g",
       grind: "",
       quantity: 0,
     },

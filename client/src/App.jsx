@@ -1,6 +1,6 @@
 // Import npm packages
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // Import pages
 import Home from "./pages/Home";
@@ -30,7 +30,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 const queryClient = new QueryClient();
 
 function App() {
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState(
+    JSON.parse(localStorage.getItem("cartProducts")) || []
+  );
   //FUNCTION TO ADD NEW ITEMS TO NEW OR EXISTING CART
   function handleNewCart(newProducts) {
     setCartProducts((currrentProducts) => {
@@ -38,6 +40,11 @@ function App() {
     });
   }
   console.log("cartProducts:", cartProducts);
+
+  //add cartproduct to localstorage
+  useEffect(() => {
+    localStorage.setItem("cartProducts", JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
   return (
     <QueryClientProvider client={queryClient}>
