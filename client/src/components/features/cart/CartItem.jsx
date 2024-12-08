@@ -46,13 +46,13 @@ function CartItem({ product, cartProducts }) {
                       {/*PRODUCT NAME */}
                       <div>
                         <div>{product.name}</div>
-                        <div>Remove</div>
+                        <div>R</div>
                       </div>
                     </div>
                   </td>
 
                   <td>{product?.price}</td>
-                  <td>1</td>
+                  <td>{cartProducts.quantity}</td>
                   <td>{product?.price}</td>
                 </tr>
               </tbody>

@@ -21,15 +21,18 @@ import ProductForm from "./ProductForm";
 function Product({ handleNewCart }) {
   const [displayPrice, setDisplayPrice] = useState("250g");
   const handleDisplayPrice = (size) => {
-    setDisplayPrice(() => {
-      if (size === "250g") return "250g";
-      if (size === "1kg") return "1kg";
-      return "0g";
-    });
+    setDisplayPrice(size);
   };
-  console.log(displayPrice);
+  const [form, setForm] = useState([
+    {
+      quantity: 0,
+      size: "",
+      grind: "",
+    },
+  ]);
+
   let navigate = useNavigate();
-  let navigatePage = useNavigate();
+
   const { user } = useAuth();
   let { id } = useParams(); // Get the data ID from the URL
 
@@ -104,7 +107,7 @@ function Product({ handleNewCart }) {
         {/*Product price */}
         <h1>
           {priceFormatter(
-            Number(data.quantity === "250g" ? data.price : data.price * 4)
+            Number(displayPrice === "250g" ? data.price : data.price * 4)
           )}
         </h1>
         {/*Product description*/}
@@ -128,6 +131,8 @@ function Product({ handleNewCart }) {
             displayPrice={displayPrice}
             setDisplayPrice={setDisplayPrice}
             handleDisplayPrice={handleDisplayPrice}
+            form={form}
+            setForm={setForm}
           />
         </div>
       </div>

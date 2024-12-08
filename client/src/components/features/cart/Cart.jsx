@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import * as styles from "./Cart.css";
 import { useQueries } from "@tanstack/react-query";
 import axios from "axios";
 import Table from "react-bootstrap/Table";
+import FreeShipping from "./FreeShipping";
 import productService from "../../../services/productService.js";
+import { FaPlus, FaMinus } from "react-icons/fa";
 
 // Fetch product data by ID
 const fetchProduct = async (productId) => {
@@ -13,7 +15,7 @@ const fetchProduct = async (productId) => {
   return response.data;
 };
 
-function Cart({ cartProducts }) {
+function Cart({ cartProducts, setCartProducts }) {
   // Fetch data for all products in the cart using useQueries
   const queries = useQueries({
     queries: cartProducts.map((product) => ({
@@ -21,6 +23,35 @@ function Cart({ cartProducts }) {
       queryFn: () => fetchProduct(product.id),
     })),
   });
+  const calculateTotalPrice = (queries) =>
+    queries.map((query, index) => {
+      const product = query.data;
+      if (product) {
+        const cartProduct = cartProducts[index];
+        const size = cartProducts[index].size;
+        const results =
+          size === "250g"
+            ? product.price * cartProduct.quantity
+            : product.price * 4 * cartProduct.quantity;
+        return results;
+      }
+    });
+
+  const updateQuantity = (id, delta, e) => {
+    const results = cartProducts.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          quantity: item.quantity + delta,
+        };
+      } else return item;
+    });
+    console.log(results);
+    setCartProducts(results);
+  };
+
+  console.log(cartProducts);
+  const subtotal = calculateTotalPrice(queries).reduce((a, b) => a + b, 0);
 
   // Check if any queries are loading or if there are any errors
   const isLoading = queries.some((query) => query.isLoading);
@@ -44,6 +75,11 @@ function Cart({ cartProducts }) {
           Continue Shopping
         </a>
       </div>
+      {subtotal < 150 && (
+        <div>
+          <FreeShipping subtotal={subtotal} />
+        </div>
+      )}
 
       {/* CART INFORMATION */}
       <div>
@@ -64,13 +100,13 @@ function Cart({ cartProducts }) {
                   <th>Product</th>
                   <th>Price</th>
                   <th>Quantity</th>
-                  <th>Total Price</th>
+                  <th>Total</th>
                 </tr>
               </thead>
               <tbody>
                 {queries.map((query, index) => {
                   const product = query.data;
-                  console.log(query.data);
+
                   if (product) {
                     const cartProduct = cartProducts[index];
                     const size = cartProducts[index].size;
@@ -78,8 +114,6 @@ function Cart({ cartProducts }) {
                       size === "250g"
                         ? product.price * cartProduct.quantity
                         : product.price * 4 * cartProduct.quantity;
-
-                    //product.price * cartProduct.quantity;
 
                     return (
                       <tr key={product.id}>
@@ -99,7 +133,22 @@ function Cart({ cartProducts }) {
                           </div>
                         </td>
                         <td>{product.price}</td>
-                        <td>{cartProduct.quantity}</td>
+                        <td>
+                          <div style={{ display: "flex" }}>
+                            <button
+                              type="button"
+                              onClick={() => updateQuantity(product.id, 1)}
+                            >
+                              <FaPlus />
+                            </button>
+                            <div>{cartProduct.quantity}</div>
+                            <button
+                              onClick={() => updateQuantity(product.id, -1)}
+                            >
+                              <FaMinus />
+                            </button>
+                          </div>
+                        </td>
                         <td>{totalPrice}</td>
                       </tr>
                     );
@@ -110,10 +159,15 @@ function Cart({ cartProducts }) {
             </Table>
 
             {/* TOTAL */}
-            <div>Add a note to your order</div>
             <div>
-              <p>SUBTOTAL BEFORE DELIVERY</p>
-              <p>TOTAL PRICE</p>
+              <div>
+                <label>Add a note to your order</label>
+                <textarea></textarea>
+              </div>
+              <div>
+                <p>SUBTOTAL BEFORE DELIVERY</p>
+                <p>TOTAL PRICE: ${subtotal}</p>
+              </div>
             </div>
           </form>
         ) : (

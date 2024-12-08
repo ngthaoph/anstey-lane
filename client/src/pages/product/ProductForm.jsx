@@ -81,41 +81,44 @@ function ProductForm({
           </fieldset>
         </div>
 
-        {/**/}
-        <div className={styles.container}>
-          <fieldset>
-            <legend>Grind</legend>
-            <span>
-              <AlButton
-                key={grindOptions[0]}
-                type="button"
-                value={grindOptions[0]}
-                onClick={() => handleGrind(grindOptions[0])}
-                active={watch("grind") === grindOptions[0] ? true : false}
-              >
-                {grindOptions[0]}
-              </AlButton>
-              <AlButton
-                key={grindOptions[1]}
-                type="button"
-                value={grindOptions[1]}
-                onClick={() => handleGrind(grindOptions[1])}
-                active={watch("grind") === grindOptions[1] ? true : false}
-              >
-                {grindOptions[1]}
-              </AlButton>
-              <AlButton
-                key={grindOptions[2]}
-                type="button"
-                value={grindOptions[2]}
-                onClick={() => handleGrind(grindOptions[2])}
-                active={watch("grind") === grindOptions[2] ? true : false}
-              >
-                {grindOptions[2]}
-              </AlButton>
-            </span>
-          </fieldset>
-        </div>
+        {/*GRIND OPTIONS*/}
+        {watch("size") === "250g" ? (
+          <div className={styles.container}>
+            <fieldset>
+              <legend>Grind</legend>
+              <span>
+                <AlButton
+                  key={grindOptions[0]}
+                  type="button"
+                  value={grindOptions[0]}
+                  onClick={() => handleGrind(grindOptions[0])}
+                  active={watch("grind") === grindOptions[0] ? true : false}
+                >
+                  {grindOptions[0]}
+                </AlButton>
+                <AlButton
+                  key={grindOptions[1]}
+                  type="button"
+                  value={grindOptions[1]}
+                  onClick={() => handleGrind(grindOptions[1])}
+                  active={watch("grind") === grindOptions[1] ? true : false}
+                >
+                  {grindOptions[1]}
+                </AlButton>
+                <AlButton
+                  key={grindOptions[2]}
+                  type="button"
+                  value={grindOptions[2]}
+                  onClick={() => handleGrind(grindOptions[2])}
+                  active={watch("grind") === grindOptions[2] ? true : false}
+                >
+                  {grindOptions[2]}
+                </AlButton>
+              </span>
+            </fieldset>
+          </div>
+        ) : null}
+
         <div className={styles.container}>
           <label htmlFor="quantity">Quantity</label>
           <br />
