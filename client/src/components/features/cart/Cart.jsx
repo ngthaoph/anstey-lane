@@ -6,6 +6,8 @@ import Table from "react-bootstrap/Table";
 import FreeShipping from "./FreeShipping";
 import productService from "../../../services/productService.js";
 import { FaPlus, FaMinus } from "react-icons/fa";
+import { AiOutlineDelete } from "react-icons/ai";
+import ButtonFrame from "../../common/ButtonFrame";
 
 // Fetch product data by ID
 const fetchProduct = async (productId) => {
@@ -23,6 +25,13 @@ function Cart({ cartProducts, setCartProducts }) {
       queryFn: () => fetchProduct(product.id),
     })),
   });
+
+  const handleRemove = (id) => {
+    const updatedCartProducts = cartProducts.filter(
+      (product) => product.id !== id
+    );
+    setCartProducts(updatedCartProducts);
+  };
   const calculateTotalPrice = (queries) =>
     queries.map((query, index) => {
       const product = query.data;
@@ -37,7 +46,7 @@ function Cart({ cartProducts, setCartProducts }) {
       }
     });
 
-  const updateQuantity = (id, delta, e) => {
+  const updateQuantity = (id, delta) => {
     const results = cartProducts.map((item) => {
       if (item.id === id) {
         return {
@@ -98,7 +107,6 @@ function Cart({ cartProducts, setCartProducts }) {
                   }}
                 >
                   <th>Product</th>
-                  <th>Price</th>
                   <th>Quantity</th>
                   <th>Total</th>
                 </tr>
@@ -130,24 +138,31 @@ function Cart({ cartProducts, setCartProducts }) {
                           <div>
                             <div>{product.name}</div>
                             <div>{size}</div>
+
+                            <div>
+                              <div onClick={() => handleRemove(product.id)}>
+                                Remove
+                                <AiOutlineDelete />
+                              </div>
+                            </div>
                           </div>
                         </td>
+
                         <td>{product.price}</td>
+
                         <td>
-                          <div style={{ display: "flex" }}>
-                            <button
+                          <ButtonFrame>
+                            <div
                               type="button"
                               onClick={() => updateQuantity(product.id, 1)}
                             >
                               <FaPlus />
-                            </button>
+                            </div>
                             <div>{cartProduct.quantity}</div>
-                            <button
-                              onClick={() => updateQuantity(product.id, -1)}
-                            >
+                            <div onClick={() => updateQuantity(product.id, -1)}>
                               <FaMinus />
-                            </button>
-                          </div>
+                            </div>
+                          </ButtonFrame>
                         </td>
                         <td>{totalPrice}</td>
                       </tr>
@@ -159,7 +174,7 @@ function Cart({ cartProducts, setCartProducts }) {
             </Table>
 
             {/* TOTAL */}
-            <div>
+            <div style={{ display: "flex" }}>
               <div>
                 <label>Add a note to your order</label>
                 <textarea></textarea>

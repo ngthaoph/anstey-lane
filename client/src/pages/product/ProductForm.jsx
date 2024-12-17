@@ -5,6 +5,7 @@ import * as styles from "./ProductForm.css";
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { Form, Button } from "react-bootstrap";
 import { useForm, Controller } from "react-hook-form";
+import ButtonFrame from "../../components/common/ButtonFrame";
 
 function ProductForm({
   handleNewCart,
@@ -123,13 +124,15 @@ function ProductForm({
           <label htmlFor="quantity">Quantity</label>
           <br />
           <div className={styles.productQuantityBox}>
-            <div>
-              <FaMinus onClick={() => handleQuantity(-1)} />
-            </div>
-            <div>{watch("quantity")}</div>
-            <div>
-              <FaPlus onClick={() => handleQuantity(1)} />
-            </div>
+            <ButtonFrame>
+              <div>
+                <FaMinus onClick={() => handleQuantity(-1)} />
+              </div>
+              <div>{watch("quantity")}</div>
+              <div>
+                <FaPlus onClick={() => handleQuantity(1)} />
+              </div>
+            </ButtonFrame>
           </div>
         </div>
         <AlButton type="submit">{isLoading ? "Add to Cart" : "Added"}</AlButton>
