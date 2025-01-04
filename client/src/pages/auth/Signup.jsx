@@ -11,6 +11,7 @@ import useAuth from "../../hooks/useAuth";
 import AlButton from "../../components/common/AlButton";
 
 import authService from "../../services/authService";
+import leftPhoto from "../../assets/images/sign-up/leftPhoto.jpg";
 function Signup() {
   //LOGIC
 
@@ -58,69 +59,99 @@ function Signup() {
   };
 
   return (
-    // <div className={styles.container}>
-    //   <div className={styles.leadCard}>
-    //     <h2 className={styles.cardTitle}>Sign up</h2>
-    <MbCard title="Sign Up" authform>
-      {/*}
+    <div style={{ display: "flex", maxWidth: "100%" }}>
+      <div
+        style={{
+          display: "flex",
+
+          flexDirection: "row",
+
+          alignContent: "stretch",
+
+          flex: 1,
+        }}
+      >
+        <div style={{ maxWidth: "50%" }}>
+          <img src={leftPhoto} alt="left-photo" />
+        </div>
+        <div
+          style={{
+            maxWidth: "50%",
+            display: "flex",
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "2rem",
+            backgroundColor: "#EFF1EE",
+          }}
+        >
+          <MbCard title="Create Account" authform>
+            {/*}
       //TEMPLATE */}
-      <Form onSubmit={handleSubmit}>
-        {/* 1. username */}
-        <Form.Group className="mb-3" controlId="username">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder=""
-            name="username"
-            onChange={handleTextChange}
-            value={username}
-          />
-        </Form.Group>
+            <Form onSubmit={handleSubmit}>
+              {/* 1. username */}
+              <Form.Group className="mb-3" controlId="username">
+                <Form.Label>Username</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder=""
+                  name="username"
+                  onChange={handleTextChange}
+                  value={username}
+                />
+              </Form.Group>
 
-        {/* 2. email */}
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder=""
-            name="email"
-            onChange={handleTextChange}
-            value={email}
-          />
-        </Form.Group>
+              {/* 2. email */}
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder=""
+                  name="email"
+                  onChange={handleTextChange}
+                  value={email}
+                />
+              </Form.Group>
 
-        {/* 3. password */}
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder=""
-            name="password"
-            onChange={handleTextChange}
-            value={password}
-          />
-        </Form.Group>
+              {/* 3. password */}
+              <Form.Group className="mb-3" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder=""
+                  name="password"
+                  onChange={handleTextChange}
+                  value={password}
+                />
+              </Form.Group>
 
-        {/* 4. password confirm */}
-        <Form.Group className="mb-3" controlId="password-confirm">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder=""
-            ref={passwordConfirmRef}
-          />
-        </Form.Group>
+              {/* 4. password confirm */}
+              <Form.Group className="mb-3" controlId="password-confirm">
+                <Form.Label>Confirm Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder=""
+                  ref={passwordConfirmRef}
+                />
+              </Form.Group>
 
-        {/* 5. submit btn */}
-        <AlButton type="submit">{loading ? "Loading..." : "Submit"}</AlButton>
-      </Form>
-      <div>
-        <span>
-          Already a member?
-          <Link to="/login">Login here</Link>
-        </span>
+              {/* 5. submit btn */}
+              <AlButton type="submit">
+                {loading ? "Loading..." : "Create"}
+              </AlButton>
+            </Form>
+            <div>
+              <span>
+                Already a member?
+                <div>
+                  <Link to="/login">Login here</Link>
+                </div>
+              </span>
+            </div>
+          </MbCard>
+        </div>
       </div>
-    </MbCard>
+    </div>
   );
 }
 

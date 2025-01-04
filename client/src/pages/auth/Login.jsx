@@ -8,6 +8,7 @@ import AlButton from "../../components/common/AlButton";
 import { toast } from "react-toastify";
 import useAuth from "../../hooks/useAuth";
 import authService from "../../services/authService";
+import rightPhoto from "../../assets/images/sign-up/rightPhoto.jpg";
 
 // import * as styles from "./Login.css";
 
@@ -48,35 +49,67 @@ function Login() {
     }
   };
   return (
-    <MbCard title="Log In">
-      <Form onSubmit={handleSubmit}>
-        {/*Email*/}
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            name="email"
-            onChange={handleChange}
-          ></Form.Control>
-        </Form.Group>
+    <div style={{ display: "flex", maxWidth: "100%" }}>
+      <div
+        style={{
+          display: "flex",
 
-        {/*password*/}
-        <Form.Group className="mb-3" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          ></Form.Control>
-        </Form.Group>
-        {/* <MbButton buttonName="Submit"></MbButton> */}
-        <AlButton loadingState={loading}>{loading ? "..." : "Submit"}</AlButton>
-      </Form>
-    </MbCard>
+          flexDirection: "row",
+
+          alignContent: "stretch",
+
+          flex: 1,
+        }}
+      >
+        <div style={{ maxWidth: "50%" }}>
+          <img src={rightPhoto} alt="right-photo" />
+        </div>
+        <div
+          style={{
+            maxWidth: "50%",
+            display: "flex",
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+
+            backgroundColor: "#EFF1EE",
+          }}
+        >
+          <MbCard title="Log In">
+            <Form onSubmit={handleSubmit}>
+              {/*Email*/}
+              <Form.Group className="mb-3" controlId="email">
+                <Form.Label>Email address</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  value={email}
+                  name="email"
+                  onChange={handleChange}
+                ></Form.Control>
+              </Form.Group>
+
+              {/*password*/}
+              <Form.Group className="mb-3" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Enter password"
+                  value={password}
+                  name="password"
+                  onChange={handleChange}
+                ></Form.Control>
+              </Form.Group>
+              {/* <MbButton buttonName="Submit"></MbButton> */}
+              <AlButton loadingState={loading}>
+                {loading ? "..." : "Submit"}
+              </AlButton>
+            </Form>
+          </MbCard>
+          <div />
+        </div>
+      </div>
+    </div>
   );
 }
 export default Login;

@@ -84,26 +84,42 @@ function ProductsPage() {
       </div>
 
       {isLoading ? (
-        <Dots />
+        <div>
+          <Dots />
+        </div>
       ) : (
         <Container className={styles.collectionContainer}>
-          {products.map((product) => (
-            <Link
-              style={{
-                textDecoration: "none",
-              }}
-              key={product.id}
-              to={`/store/products/product/${product.id}`}
-            >
-              <AlProductCard
+          <div
+            style={{
+              display: "flex",
+
+              flex: "1 1 auto",
+              flexDirection: "row",
+              flexWrap: "wrap",
+              alignItems: "center",
+              padding: "20px 20px",
+            }}
+          >
+            {products.map((product) => (
+              <Link
+                style={{
+                  textDecoration: "none",
+                }}
                 key={product.id}
-                name={product.name}
-                price={product.price}
-                image={product.image}
-                base={product.base}
-              />
-            </Link>
-          ))}
+                to={`/store/products/product/${product.id}`}
+              >
+                <div style={{ padding: "10px" }}>
+                  <AlProductCard
+                    key={product.id}
+                    name={product.name}
+                    price={product.price}
+                    image={product.image}
+                    base={product.base}
+                  />
+                </div>
+              </Link>
+            ))}
+          </div>
         </Container>
       )}
     </div>

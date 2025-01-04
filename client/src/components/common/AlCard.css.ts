@@ -2,7 +2,7 @@ import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
 
 export const generalForm = style({
-  minWidth: "60vw",
+  minWidth: "50vw",
 });
 
 export const authForm = style({
@@ -11,18 +11,16 @@ export const authForm = style({
 
 export const container = style({
   marginTop: "1rem",
-  minHeight: "70vh",
+  minHeight: "50vh",
   display: "flex",
   flexDirection: "column",
 });
 
 export const leadCard = style({
-  background: vars.colors.primary,
   color: vars.colors.complementary,
   margin: "auto",
   padding: "2rem",
-  borderRadius: "1rem",
-  boxShadow: "0 2px 8px rgba(0, 0, 0, 0.5)",
+
   textAlign: "center",
 });
 

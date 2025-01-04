@@ -19,7 +19,7 @@ export const resultNumber = style({
 export const collectionContainer = style({
   display: "flex",
 
-  padding: "0 15px",
+  padding: "20px 20px",
 
   boxSizing: "border-box",
   flexWrap: "wrap",
