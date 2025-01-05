@@ -6,12 +6,11 @@ import wave from "../assets/images/wave.svg";
 const Home = () => {
   return (
     <Fragment>
-      <Container style={{ display: "flex", padding: 0, margin: "none" }}>
+      <Container style={{ display: "flex", maxWidth: "100%" }}>
         <div style={{ flex: "1" }}>
           <Carousel />
         </div>
       </Container>
-      <img src={wave} />
     </Fragment>
   );
 };

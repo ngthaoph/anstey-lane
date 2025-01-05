@@ -15,6 +15,11 @@ export const textContainer = style({
   backgroundColor: vars.colors.grey200,
   flex: "1 1 50%",
   display: "flex",
-  alignItems: "center",
+  alignItems: "flex-start",
   justifyContent: "center",
+  flexDirection: "column",
+});
+
+export const text = style({
+  padding: "10px 10px",
 });

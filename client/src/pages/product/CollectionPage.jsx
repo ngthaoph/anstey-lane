@@ -84,7 +84,7 @@ function ProductsPage() {
       </div>
 
       {isLoading ? (
-        <div>
+        <div style={{ flex: 1, alignItems: "center" }}>
           <Dots />
         </div>
       ) : (
@@ -98,6 +98,8 @@ function ProductsPage() {
               flexWrap: "wrap",
               alignItems: "center",
               padding: "20px 20px",
+              justifyContent: "center",
+              gap: "20px",
             }}
           >
             {products.map((product) => (

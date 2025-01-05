@@ -3,9 +3,9 @@ import { vars } from "../../styles/themes.css";
 
 export const productCard = style({
   color: vars.colors.brand,
-  width: "200px",
+  width: "300px",
 
-  margin: "20px",
+  margin: "30px",
   backgroundColor: vars.colors.primary,
   border: "none",
   alignItems: "center",
