@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const shopFilter = style({
   flexWrap: "wrap",
@@ -30,6 +31,8 @@ export const liFilter = style({
   listStyle: "none",
   textAlign: "center",
   flexBasis: "  | auto",
+  fontFamily: vars.fonts.bold,
+  fontWeight: vars.fontWeights.bold,
   ":hover": {
     borderTop:
       "2px solid #661a34" /* Add a red border-top when the filter is active */,

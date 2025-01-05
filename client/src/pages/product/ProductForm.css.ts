@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const container = style({
   borderBottom: "1px solid #b1bec1 ",

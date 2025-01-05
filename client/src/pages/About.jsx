@@ -4,7 +4,7 @@ import coffee1 from "../assets/images/about/coffee1.jpg";
 import * as styles from "./About.css";
 import roasting from "../assets/images/about/roasting.jpg";
 import impact from "../assets/images/about/impact.jpg";
-import employment from "../assets/images/about/employment.jpg";
+
 function About() {
   return (
     <div className={styles.aboutContainer}>
@@ -13,7 +13,7 @@ function About() {
       </div>
       <header className={styles.textContainer}>
         <div className={styles.text}>
-          <div>Anstey Lane</div>
+          <div className={styles.textHeader}>Anstey Lane</div>
 
           <div>
             Anstey Lane Coffee Roasters is an Australian wholesale organic
@@ -23,7 +23,7 @@ function About() {
       </header>
       <div className={styles.textContainer}>
         <div className={styles.text}>
-          <div>Our coffee</div>
+          <div className={styles.textHeader}>Our coffee</div>
           <div>
             <p>
               Since our inception over a decade ago, we have worked continuously
@@ -47,7 +47,7 @@ function About() {
       </div>
       <div className={styles.textContainer}>
         <div className={styles.text}>
-          <div>Our Process</div>
+          <div className={styles.textHeader}>Our Process</div>
           <p>
             Each batch begins with a careful selection of raw coffee, sourced
             from the world is best growing regions. From there, we profile,
@@ -67,7 +67,7 @@ function About() {
       </div>
       <div className={styles.textContainer}>
         <div className={styles.text}>
-          <div>Our Impact</div>
+          <div className={styles.textHeader}>Our Impact</div>
           <p>
             For us, coffee quality is more than just the flavour in the cup:
             Environmental and social sustainability stand at the heart of

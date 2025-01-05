@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const generalForm = style({
   minWidth: "50vw",
@@ -17,7 +18,7 @@ export const container = style({
 });
 
 export const leadCard = style({
-  color: vars.colors.complementary,
+  color: vars.colors.brand,
   margin: "auto",
   padding: "2rem",
 
@@ -29,4 +30,5 @@ export const cardTitle = style({
   paddingBottom: "1rem",
   fontSize: "2em",
   fontWeight: vars.fontWeights.bold,
+  fontFamily: vars.fonts.brand,
 });

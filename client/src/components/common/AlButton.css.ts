@@ -1,9 +1,10 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 
 // React-Bootstrap buttons may add an `.active` class for active state
 export const button = style({
-  fontFamily: "JetBrains Mono",
+  fontFamily: vars.fonts.button,
   fontSize: "20px",
   lineHeight: "24px",
   color: "#ffffff",

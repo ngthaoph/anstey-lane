@@ -1,5 +1,6 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
+import { createGlobalTheme } from "@vanilla-extract/css";
 
 export const container = style({
   display: "flex",
@@ -32,4 +33,6 @@ export const goBackTab = style({
   paddingBottom: "6px",
   marginBottom: "40px",
   fontSize: "25px",
+  fontFamily: vars.fonts.bold,
+  fontWeight: vars.fontWeights.bold,
 });

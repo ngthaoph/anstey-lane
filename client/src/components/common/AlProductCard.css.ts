@@ -1,12 +1,12 @@
 import { style } from "@vanilla-extract/css";
 import { vars } from "../../styles/themes.css";
 
-export const productCard = style({
-  color: vars.colors.brand,
+export const productCardContainer = style({
   width: "300px",
+  backgroundColor: vars.colors.primary,
 
   margin: "30px",
-  backgroundColor: vars.colors.primary,
+
   border: "none",
   alignItems: "center",
   flexGrow: 1,
@@ -14,6 +14,12 @@ export const productCard = style({
 
   display: "flex",
   flexDirection: "column",
+  gap: "20px 10px",
+});
+export const container = style({
+  display: "flex",
+  backgroundColor: vars.colors.primary,
+  border: "none",
 });
 export const productImage = style({
   transition: "all ease-in-out 0.3s",

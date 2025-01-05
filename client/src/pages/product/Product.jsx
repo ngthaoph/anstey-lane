@@ -79,7 +79,7 @@ function Product({ handleNewCart }) {
     <div className={styles.container}>
       <div className={styles.productWrapper}>
         {/*Product photo */}
-        <div style={{ width: "40%", margin: "auto" }}>
+        <div style={{ width: "50%", margin: "auto" }}>
           <img src={data.image} alt={data.name} />
         </div>
       </div>
