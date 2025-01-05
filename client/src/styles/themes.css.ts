@@ -5,8 +5,8 @@ export const root = createGlobalTheme(":root", {
   fonts: {
     brand: "Inter",
     body: "Arial",
-    bold: "Montserrat",
-    button: "Mogra",
+    bold: "Karla",
+    button: "Sriracha",
   },
   colors: {
     // Semantic tokens

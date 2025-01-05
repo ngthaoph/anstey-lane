@@ -81,8 +81,8 @@ function Login() {
               <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
-                  type="email"
-                  placeholder="Enter email"
+                  type="text"
+                  placeholder=""
                   value={email}
                   name="email"
                   onChange={handleChange}
@@ -93,8 +93,8 @@ function Login() {
               <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control
-                  type="password"
-                  placeholder="Enter password"
+                  type="text"
+                  placeholder=""
                   value={password}
                   name="password"
                   onChange={handleChange}

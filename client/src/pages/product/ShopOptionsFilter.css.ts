@@ -17,13 +17,14 @@ export const ulFilter = style({
   flexWrap: "wrap",
 
   borderTop: "solid",
+  paddingLeft: "20px",
 });
 
 export const liFilter = style({
   textTransform: "uppercase",
-  borderRight: "1px solid #2b2c30",
+  borderRight: "1.5px solid #2b2c30",
   flex: 1,
-  fontSize: "13px",
+  fontSize: "15px",
   letterSpacing: "3px",
   lineHeight: "1.2",
   justifyContent: "center",
