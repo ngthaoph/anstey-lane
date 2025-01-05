@@ -19,6 +19,7 @@ const fetchProduct = async (productId) => {
 
 function Cart({ cartProducts, setCartProducts }) {
   // Fetch data for all products in the cart using useQueries
+  let priceWithDelivery;
   const queries = useQueries({
     queries: cartProducts.map((product) => ({
       queryKey: ["productCart", product.id],
@@ -102,12 +103,13 @@ function Cart({ cartProducts, setCartProducts }) {
                     lineHeight: "1.4737",
                     textTransform: "inherit",
                     borderBottom: "1px solid #2b2c30",
-                    padding: "18px 0",
-                    textAlign: "left !important",
+                    padding: "18px 18px",
+                    textAlign: "left",
                   }}
                 >
                   <th>Product</th>
                   <th>Quantity</th>
+                  <th>Price</th>
                   <th>Total</th>
                 </tr>
               </thead>
@@ -125,6 +127,7 @@ function Cart({ cartProducts, setCartProducts }) {
 
                     return (
                       <tr key={product.id}>
+                        {/* 1. PRODUCT INFORMATION*/}
                         <td style={{ display: "flex" }}>
                           <img
                             style={{
@@ -148,8 +151,7 @@ function Cart({ cartProducts, setCartProducts }) {
                           </div>
                         </td>
 
-                        <td>{product.price}</td>
-
+                        {/* 2. QUANTITY */}
                         <td>
                           <ButtonFrame>
                             <div
@@ -164,7 +166,11 @@ function Cart({ cartProducts, setCartProducts }) {
                             </div>
                           </ButtonFrame>
                         </td>
-                        <td>{totalPrice}</td>
+                        {/* 3. QUANTITY */}
+
+                        <td>${product.price}</td>
+                        {/* */}
+                        <td>${totalPrice}</td>
                       </tr>
                     );
                   }
@@ -173,15 +179,43 @@ function Cart({ cartProducts, setCartProducts }) {
               </tbody>
             </Table>
 
-            {/* TOTAL */}
-            <div style={{ display: "flex" }}>
-              <div>
+            {/* CART TOTAL BOTTOM */}
+            <div
+              style={{
+                display: "flex",
+                flex: 1,
+
+                flexDirection: "row",
+                alignItems: "flex-start",
+              }}
+            >
+              <div
+                style={{ display: "flex", flex: 1, flexDirection: "column" }}
+              >
                 <label>Add a note to your order</label>
-                <textarea></textarea>
+                <textarea
+                  style={{ width: "300px", height: "100px" }}
+                ></textarea>
               </div>
-              <div>
-                <p>SUBTOTAL BEFORE DELIVERY</p>
-                <p>TOTAL PRICE: ${subtotal}</p>
+              <div
+                style={{
+                  display: "flex",
+                  flex: 1,
+
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                }}
+              >
+                <p className={styles.cartBold}>
+                  SUBTOTAL BEFORE DELIVERY: ${subtotal}
+                </p>
+
+                <p className={styles.cartBold}>
+                  TOTAL PRICE: ${" "}
+                  {subtotal > 150
+                    ? subtotal
+                    : (priceWithDelivery = subtotal + 15)}
+                </p>
               </div>
             </div>
           </form>

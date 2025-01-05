@@ -3,8 +3,8 @@ import { vars } from "../../../styles/themes.css";
 
 export const container = style({
   maxWidth: "1440px",
-  margin: "0 auto",
-  padding: "20px",
+  margin: "10px auto",
+  padding: "50px",
   display: "flex",
   flexDirection: "column",
   justifyContent: "space-between" /* or space-around / space-evenly */,
@@ -13,13 +13,21 @@ export const container = style({
 
 export const cartContainerH1 = style({
   lineHeight: "1.25",
-  fontSize: "80px",
+  fontSize: "50px",
   letterSpacing: "-1.6px",
+  fontFamily: vars.fonts.brand,
 });
 
 export const cartContainerLink = style({
   cursor: "pointer",
   textDecoration: "none",
+  textDecorationColor: vars.colors.brandDark,
 
-  transition: "All .2s ease-in-out",
+  fontFamily: vars.fonts.body,
+});
+
+export const cartBold = style({
+  fontFamily: vars.fonts.bold,
+  fontWeight: vars.fontWeights.bold,
+  color: vars.colors.brandDark,
 });
