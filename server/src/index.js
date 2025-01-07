@@ -50,28 +50,6 @@ app.use(apiErrorHandler);
 // PORT listener
 // TESTING/DEVELOPMENT
 // Ping DB & Set Port
-// if (config.env === "development") {
-//   // DB Ping function (dev testing)
-//   db.listCollections()
-//     .then((collections) => {
-//       debugStartup("Connected to Cloud Firestore");
-//       for (let collection of collections) {
-//         debugStartup(`DB collection: ${collection.id}`);
-//       }
-//     })
-//     .then(() => {
-//       app.listen(config.port, () =>
-//         console.log(`Development Server is running on port: ${config.port}`)
-//       );
-//     });
-
-//   // SETTING PORT IN PREVIEW/PROD
-// } else {
-//   app.listen(config.port, () =>
-//     console.log(`Production Server is running on port: ${config.port}`)
-//   );
-// }
-
 if (config.env === "development") {
   // DB Ping function (dev testing)
   db.listCollections()
@@ -82,16 +60,39 @@ if (config.env === "development") {
       }
     })
     .then(() => {
-      // Use dynamic port for development, default to 5005
-      const port = process.env.PORT || 5005;
-      app.listen(port, () =>
-        console.log(`Development Server is running on port: ${port}`)
+      app.listen(config.port, () =>
+        console.log(`Development Server is running on port: ${config.port}`)
       );
     });
+
+  // SETTING PORT IN PREVIEW/PROD
 } else {
-  // In production, use dynamic port set by Render
-  const port = process.env.PORT || 5005; // Fallback to 5005 for local dev/testing
-  app.listen(port, () =>
-    console.log(`Production Server is running on port: ${port}`)
+  app.listen(config.port, () =>
+    console.log(`Production Server is running on port: ${config.port}`)
   );
 }
+
+//***** */
+// if (config.env === "development") {
+//   // DB Ping function (dev testing)
+//   db.listCollections()
+//     .then((collections) => {
+//       debugStartup("Connected to Cloud Firestore");
+//       for (let collection of collections) {
+//         debugStartup(`DB collection: ${collection.id}`);
+//       }
+//     })
+//     .then(() => {
+//       // Use dynamic port for development, default to 5005
+//       const port = process.env.PORT || 5005;
+//       app.listen(port, () =>
+//         console.log(`Development Server is running on port: ${port}`)
+//       );
+//     });
+// } else {
+//   // In production, use dynamic port set by Render
+//   const port = process.env.PORT || 5005; // Fallback to 5005 for local dev/testing
+//   app.listen(port, () =>
+//     console.log(`Production Server is running on port: ${port}`)
+//   );
+// }

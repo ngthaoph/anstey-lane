@@ -3,7 +3,7 @@ import { toast } from "react-toastify";
 
 // 1. Create a custom axios instance
 const api = axios.create({
-  baseURL: "http://localhost:5005",
+  baseURL: import.meta.env.VITE_API_URL,
 });
 
 // 2. AXIOS RESPONSE INTERCEPTOR
