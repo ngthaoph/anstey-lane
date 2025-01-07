@@ -50,14 +50,16 @@ function Cart({ cartProducts, setCartProducts }) {
   const updateQuantity = (id, delta) => {
     const results = cartProducts.map((item) => {
       if (item.id === id) {
+        const newQuantity = item.quantity + delta;
         return {
           ...item,
-          quantity: item.quantity + delta,
+          quantity: newQuantity > 0 ? newQuantity : 0,
         };
       } else return item;
     });
     console.log(results);
     setCartProducts(results);
+    s;
   };
 
   console.log(cartProducts);
