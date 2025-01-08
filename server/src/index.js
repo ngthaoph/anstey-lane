@@ -47,6 +47,9 @@ app.use((req, res, next) => {
 // Call the Error Handler middlware
 app.use(apiErrorHandler);
 
+console.log(config.env, "CORS_WHITELIST_1:", process.env.CORS_WHITELIST_1);
+console.log(config.env, "CORS_WHITELIST_2:", process.env.CORS_WHITELIST_2);
+
 // PORT listener
 // TESTING/DEVELOPMENT
 // Ping DB & Set Port
