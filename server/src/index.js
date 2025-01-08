@@ -71,7 +71,7 @@ if (config.env === "development") {
     console.log(`Production Server is running on port: ${config.port}`)
   );
 }
-
+console.log(config.port);
 //***** */
 // if (config.env === "development") {
 //   // DB Ping function (dev testing)

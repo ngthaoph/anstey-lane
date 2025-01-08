@@ -27,6 +27,7 @@ try {
     };
   }
   console.log(serviceAccountKey);
+  console.log(config.env);
 
   const firebaseAppOptions = {
     credential: admin.credential.cert(serviceAccountKey),
