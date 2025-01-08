@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
 });
-
+console.log(import.meta.env.VITE_API_URL);
 // 2. AXIOS RESPONSE INTERCEPTOR
 api.interceptors.response.use(null, (error) => {
   // Variable which contains error ranges (true/false)
