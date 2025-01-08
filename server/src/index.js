@@ -8,7 +8,7 @@ const corsOptions = require("./config/corsOptions");
 const fileUpload = require("express-fileupload");
 
 // Testing import
-const { dbPing } = require("./config/db");
+const { db } = require("./config/db");
 
 // Import custom middleware
 const apiErrorHandler = require("./middleware/apiErrorHandler");
