@@ -14,5 +14,5 @@ const corsOptions = {
   },
   optionsSuccessStatus: 200,
 };
-console.log("corsOptions:", corsOptions.origin);
+
 module.exports = corsOptions;

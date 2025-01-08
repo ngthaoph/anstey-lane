@@ -1,58 +1,56 @@
-// Import modules
-const express = require("express");
-const helmet = require("helmet");
+// IMPORTED SERVER MODULES
+// External modules
 require("dotenv").config();
+const express = require("express");
 const morgan = require("morgan");
-const cors = require("cors");
-const corsOptions = require("./config/corsOptions");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
+const helmet = require("helmet");
 
-// Testing import
-const { db } = require("./config/db");
-
-// Import custom middleware
-const apiErrorHandler = require("./middleware/apiErrorHandler");
-const ApiError = require("./utilities/ApiError");
-
-// Import routes + envs
-const routes = require("./routes/routes");
+// Local modules
 const config = require("./config/config");
-
-// Debug logs
+const ApiError = require("./utilities/ApiError");
+const apiErrorHandler = require("./middleware/apiErrorHandler");
+const routes = require("./routes/routes");
+const { db } = require("./config/db");
+const corsOptions = require("./config/corsOptions");
 const debugStartup = require("debug")("app:startup");
 
-// Init express app instance
+// Initialise application using express
 const app = express();
 
-// Access express middleware
-debugStartup("Parsing middleware for JSON & urlencoding ...");
-
+// EXPRESS MIDDLEWARE:
+// HTTP Header-setter security & CORS
 app.use(helmet());
 app.use(cors(corsOptions));
+debugStartup("Helmet & CORS Pre-Flight requests enabled");
+
+// POST request parsing middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(fileUpload({ createParentPath: true }));
+debugStartup("POST parsing middleware enabled for JSON/URL/Files");
 
-// Dev request middleware
+// Cycle our requests through morgan to track our queries
 app.use(morgan("dev"));
 
-// Test home route
+// Main routing middleware function
+// *NEW* ROOT ROUTE:
+app.get("/", (req, res) => {
+  res.send("Welcome to Timbertop United API 👩‍💻");
+});
+// ROUTES PATH: http://localhost:5000/api/
 app.use("/api", routes());
 
-// Not found route (404)
+// Not Found Route
 app.use((req, res, next) => {
   next(ApiError.notFound());
 });
 
-// Call the Error Handler middlware
+// Error Handler Middleware
 app.use(apiErrorHandler);
 
-console.log(config.env, "CORS_WHITELIST_1:", process.env.CORS_WHITELIST_1);
-console.log(config.env, "CORS_WHITELIST_2:", process.env.CORS_WHITELIST_2);
-
-// PORT listener
-// TESTING/DEVELOPMENT
-// Ping DB & Set Port
+// SETTING PORT IN DEV (tests db on boot)
 if (config.env === "development") {
   // DB Ping function (dev testing)
   db.listCollections()
@@ -74,28 +72,3 @@ if (config.env === "development") {
     console.log(`Production Server is running on port: ${config.port}`)
   );
 }
-console.log(config.port);
-//***** */
-// if (config.env === "development") {
-//   // DB Ping function (dev testing)
-//   db.listCollections()
-//     .then((collections) => {
-//       debugStartup("Connected to Cloud Firestore");
-//       for (let collection of collections) {
-//         debugStartup(`DB collection: ${collection.id}`);
-//       }
-//     })
-//     .then(() => {
-//       // Use dynamic port for development, default to 5005
-//       const port = process.env.PORT || 5005;
-//       app.listen(port, () =>
-//         console.log(`Development Server is running on port: ${port}`)
-//       );
-//     });
-// } else {
-//   // In production, use dynamic port set by Render
-//   const port = process.env.PORT || 5005; // Fallback to 5005 for local dev/testing
-//   app.listen(port, () =>
-//     console.log(`Production Server is running on port: ${port}`)
-//   );
-// }
