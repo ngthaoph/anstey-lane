@@ -37,9 +37,7 @@ function Product({ handleNewCart }) {
   let { id } = useParams(); // Get the data ID from the URL
 
   const fetchProduct = async () => {
-    const response = await axios.get(
-      `http://localhost:5005/api/products/product/${id}`
-    ); // Ensure this API is correct
+    const response = await productService.getById(id); // Ensure this API is correct
 
     return response.data;
   };

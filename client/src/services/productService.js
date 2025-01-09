@@ -7,7 +7,7 @@ async function getAll(data) {
   return response;
 }
 async function getById(id) {
-  const response = await api.get("/api/products/" + id);
+  const response = await api.get(`/api/products/product/${id}`);
   console.log(response?.data);
   return response;
 }
