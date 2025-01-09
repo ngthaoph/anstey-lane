@@ -2,9 +2,8 @@ import api from "./api";
 
 //REGISTER POST REQUEST
 async function getAll(data) {
-  const response = await api.get("/api/products", data);
+  const response = await api.get(`/api/products/${data}`);
 
-  console.log(response?.data);
   return response;
 }
 async function getById(id) {

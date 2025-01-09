@@ -33,9 +33,8 @@ function ProductsPage() {
     const category = `${
       selectedCategory === "all" ? "" : `/${selectedCategory}`
     }`;
-    const response = await axios.get(
-      `http://localhost:5005/api/products${category}`
-    );
+    const response = await productService.getAll(category);
+
     console.log(response.data);
 
     return response.data;
