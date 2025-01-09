@@ -10,10 +10,8 @@ import { AiOutlineDelete } from "react-icons/ai";
 import ButtonFrame from "../../common/ButtonFrame";
 
 // Fetch product data by ID
-const fetchProduct = async (productId) => {
-  const response = await axios.get(
-    `http://localhost:5005/api/products/product/${productId}`
-  );
+const fetchProduct = async (id) => {
+  const response = await productService.getById(id);
   return response.data;
 };
 
