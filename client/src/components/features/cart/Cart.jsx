@@ -57,7 +57,6 @@ function Cart({ cartProducts, setCartProducts }) {
     });
     console.log(results);
     setCartProducts(results);
-    s;
   };
 
   console.log(cartProducts);

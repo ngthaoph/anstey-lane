@@ -35,7 +35,8 @@ function ProductsPage() {
     }`;
     const response = await productService.getAll(category);
 
-    console.log(response.data);
+    // const response = await productService.getProducts(category);
+    // console.log(response.data);
 
     return response.data;
   };

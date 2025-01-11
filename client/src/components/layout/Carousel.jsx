@@ -5,6 +5,7 @@ import carousel2 from "../../assets/images/carousel/carousel2.jpg";
 import carousel3 from "../../assets/images/carousel/carousel3.jpg";
 import Autoplay from "embla-carousel-autoplay";
 import { embla, emblaContainer, emblaSlide } from "./Carousel.css";
+import * as style from "./Carousel.css";
 const sliderData = [
   {
     id: 1,
@@ -24,16 +25,24 @@ export default function Carousel() {
   const [emblaRef] = useEmblaCarousel({ loop: false }, [Autoplay()]);
 
   return (
-    <div className={embla} ref={emblaRef}>
-      <div className={emblaContainer}>
-        {sliderData?.map((item) => {
-          return (
-            <div key={item.id} className={emblaSlide}>
-              <img src={item.imageUrl} alt="carousel slide" />
-            </div>
-          );
-        })}
+    <>
+      <div className={embla} ref={emblaRef}>
+        <div className={emblaContainer}>
+          {sliderData?.map((item) => {
+            return (
+              <div key={item.id} className={emblaSlide}>
+                <div className={style.responsiveImage}>
+                  <img
+                    src={item.imageUrl}
+                    alt="carousel slide"
+                    className={style.responsiveImage}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -7,6 +7,11 @@ export const shopFilter = style({
 
   marginBottom: "20px",
   boxSizing: "border-box",
+  "@media": {
+    "screen and (max-width: 768px)": {
+      marginBottom: "46px",
+    },
+  },
 });
 
 export const ulFilter = style({
@@ -17,7 +22,15 @@ export const ulFilter = style({
   flexWrap: "wrap",
 
   borderTop: "solid",
-  paddingLeft: "20px",
+
+  "@media": {
+    // For mobile screens, adjust filter layout
+    "screen and (max-width: 768px)": {
+      display: "flex",
+      flexWrap: "wrap",
+      borderTop: "none",
+    },
+  },
 });
 
 export const liFilter = style({
@@ -39,6 +52,19 @@ export const liFilter = style({
       "2px solid #661a34" /* Add a red border-top when the filter is active */,
     color: "#007bff" /* Optional: change text color for active state */,
   },
+  "@media": {
+    // For tablet screens, adjust filter layout
+    "screen and (max-width: 768px)": {
+      fontFamily: "GT Walsheim",
+      fontSize: "12px",
+      letterSpacing: ".9px",
+
+      flex: "inherit",
+      marginRight: "9px",
+      marginBottom: "11px",
+      borderRight: "none",
+    },
+  },
 });
 
 export const aLink = style({
@@ -47,4 +73,10 @@ export const aLink = style({
   width: "100%",
   color: "#2b2c30",
   textDecoration: "none",
+  "@media": {
+    "screen and (max-width: 768px)": {
+      padding: "8px",
+      border: "1px solid #2b2c30",
+    },
+  },
 });
