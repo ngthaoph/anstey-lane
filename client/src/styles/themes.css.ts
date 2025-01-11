@@ -10,11 +10,13 @@ export const root = createGlobalTheme(":root", {
   },
   colors: {
     // Semantic tokens
-    primary: twColors.amber[50],
-    complementary: twColors.red[900],
-    brand: twColors.zinc[700],
-    brandLight: twColors.rose[200],
-    brandDark: twColors.amber[950],
+    primary: "#f2f0f3", //background color
+    complementary: "#39183a", //footer header
+    brand: "#612e58", //bold font
+    brandLight: "#d6c9d8",
+    brandDark: "#7a5c7a",
+    buttonLight: "#d6c9d8",
+    buttonDark: "#7a5c7a",
 
     // Color tokens
     success: twColors.green[400],

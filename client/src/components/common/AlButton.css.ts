@@ -8,11 +8,10 @@ export const button = style({
   fontSize: "20px",
   lineHeight: "24px",
   color: "#ffffff",
-  background: vars.colors.brandDark,
+  background: vars.colors.buttonDark,
   ":hover": {
-    backgroundColor: "seashell",
+    backgroundColor: vars.colors.buttonLight,
     color: vars.colors.brandDark,
-    border: "1px solid",
   },
   border: "1px",
   outline: "none",
@@ -23,9 +22,8 @@ export const button = style({
   selectors: {
     // Also target React-Bootstrap's `active` class if necessary
     "&.active": {
-      backgroundColor: "seashell",
+      backgroundColor: vars.colors.brandLight,
       color: vars.colors.brandDark,
-      border: "red ",
     },
   },
 });
