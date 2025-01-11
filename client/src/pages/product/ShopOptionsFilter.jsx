@@ -8,19 +8,29 @@ function ShopOptionsFilter({
   handleSelectedCategory,
   selectedCategory,
 }) {
-  const [activeFilter, setActiveFilter] = useState();
-  //set active filter by clicking on the filter
+  const [activeFilter, setActiveFilter] = useState(null); // Now track the active filter by value (string)
 
+  // Set active filter by clicking on the filter
+  const handleActive = (filter) => {
+    setActiveFilter(filter);
+    handleSelectedCategory(filter);
+  };
+  console.log(selectedCategory, activeFilter);
   return (
     <div className={styles.shopFilter}>
       <ul className={styles.ulFilter}>
         {baseOptions.map((filter) => (
           <li
             key={filter}
-            className={styles.liFilter}
-            onClick={() => handleSelectedCategory(filter)}
+            className={`${styles.liFilter} 
+                ${activeFilter === filter ? "active" : ""} `}
+            onClick={() => handleActive(filter)}
           >
-            <a className={styles.aLink}>
+            <a
+              className={`${styles.aLink} ${
+                activeFilter === filter ? "active" : ""
+              }   `}
+            >
               {filter.charAt(0).toUpperCase() + filter.slice(1)}
             </a>
           </li>
@@ -31,20 +41,3 @@ function ShopOptionsFilter({
 }
 
 export default ShopOptionsFilter;
-
-{
-  /* <li className={styles.liFilter}>
-          <a className={styles.aLink} href="/store/products">
-            All
-          </a>
-        </li>
-        <li className={styles.liFilter}>
-          <a className={styles.aLink}>Espresso</a>
-        </li>
-        <li className={styles.liFilter}>
-          <a className={styles.aLink}>Filter</a>
-        </li>
-        <li className={styles.liFilter}>
-          <a className={styles.aLink}>Blend</a>
-        </li>*/
-}

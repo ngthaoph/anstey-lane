@@ -27,8 +27,13 @@ export const ulFilter = style({
     // For mobile screens, adjust filter layout
     "screen and (max-width: 768px)": {
       display: "flex",
+      flex: 1,
       flexWrap: "wrap",
       borderTop: "none",
+      margin: "20px 20px",
+      alignItems: "center",
+      fontFamily: vars.fonts.brand,
+      fontWeight: vars.fontWeights.bold,
     },
   },
 });
@@ -44,21 +49,23 @@ export const liFilter = style({
   cursor: "pointer",
   listStyle: "none",
   textAlign: "center",
-  flexBasis: "  | auto",
+
   fontFamily: vars.fonts.bold,
   fontWeight: vars.fontWeights.bold,
   ":hover": {
-    borderTop:
-      "2px solid #661a34" /* Add a red border-top when the filter is active */,
-    color: "#007bff" /* Optional: change text color for active state */,
+    borderTop: "2px solid #661a34", // Red border when active
+    color: "#661a34", // Optional: change text color on hover
+  },
+  selectors: {
+    "&.active": {
+      borderTop: "2px solid #661a34",
+    },
   },
   "@media": {
-    // For tablet screens, adjust filter layout
     "screen and (max-width: 768px)": {
       fontFamily: "GT Walsheim",
       fontSize: "12px",
       letterSpacing: ".9px",
-
       flex: "inherit",
       marginRight: "9px",
       marginBottom: "11px",
@@ -67,6 +74,13 @@ export const liFilter = style({
         borderTop: "2px solid #661a34",
         color: "beige",
         backgroundColor: "#661a34",
+      },
+      selectors: {
+        "&.active": {
+          borderTop: "2px solid #661a34",
+          color: "pink",
+          backgroundColor: "#661a34",
+        },
       },
     },
   },
@@ -78,10 +92,23 @@ export const aLink = style({
   width: "100%",
   color: "#2b2c30",
   textDecoration: "none",
+  selectors: {
+    "&.active": {
+      borderTop: "2px solid #661a34",
+      color: "pink",
+      backgroundColor: "#661a34",
+    },
+  },
+
   "@media": {
     "screen and (max-width: 768px)": {
       padding: "8px",
       border: "1px solid #2b2c30",
+      selectors: {
+        "&.active": {
+          color: "white",
+        },
+      },
     },
   },
 });
