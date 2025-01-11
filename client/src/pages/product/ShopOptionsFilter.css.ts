@@ -63,6 +63,11 @@ export const liFilter = style({
       marginRight: "9px",
       marginBottom: "11px",
       borderRight: "none",
+      ":hover": {
+        borderTop: "2px solid #661a34",
+        color: "beige",
+        backgroundColor: "#661a34",
+      },
     },
   },
 });

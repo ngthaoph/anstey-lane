@@ -52,8 +52,16 @@ function ProductsPage() {
   });
   if (isLoading) {
     return (
-      <div>
-        <Dots style={{ alignItems: "center" }} />
+      <div
+        style={{
+          display: "flex", // Enable flexbox layout
+          justifyContent: "center", // Center horizontally
+          alignItems: "center", // Center vertically
+          height: "100vh", // Take full viewport height
+          width: "100vw", // Take full viewport width
+        }}
+      >
+        <Dots />
       </div>
     );
   }
