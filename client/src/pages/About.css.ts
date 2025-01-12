@@ -10,6 +10,11 @@ export const aboutContainer = style({
   alignItems: "stretch",
   alignContent: "stretch",
   padding: 0,
+  "@media": {
+    "screen and (max-width: 768px)": {
+      flexDirection: "column",
+    },
+  },
 });
 
 export const textContainer = style({

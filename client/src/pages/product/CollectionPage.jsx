@@ -93,7 +93,7 @@ function ProductsPage() {
 
       {isLoading ? (
         <div style={{ flex: 1, alignItems: "center" }}>
-          <Dots />
+          <Dots color1="#fbf9fb" />
         </div>
       ) : (
         <Container className={styles.collectionContainer}>

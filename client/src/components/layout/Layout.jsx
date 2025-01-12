@@ -23,14 +23,13 @@ const Layout = () => (
       transition={Slide}
       theme="colored"
     />
-
-    <Header />
-    {/* Wrap all content in column-direction flexbox */}
-    <div className={styles.appContent}>
-      {/* {props.children} */}
-      <Outlet />
+    <div className={styles.mainContent}>
+      <Header />
+      <div className={styles.appContent}>
+        <Outlet /> {/* Your page content */}
+      </div>
+      <Footer />
     </div>
-    <Footer />
   </div>
 );
 

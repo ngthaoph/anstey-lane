@@ -14,7 +14,7 @@ export const logo = style({
 });
 
 export const navLink = style({
-  color: vars.colors.brandDark,
+  color: vars.colors.brand,
   fontSize: vars.fontSizes["3x"],
   textTransform: "uppercase",
   transition: "0.2s ease-in",

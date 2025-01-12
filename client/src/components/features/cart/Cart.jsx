@@ -94,7 +94,7 @@ function Cart({ cartProducts, setCartProducts }) {
       <div>
         {cartProducts.length > 0 ? (
           <form>
-            <Table>
+            <table>
               <thead>
                 <tr
                   style={{
@@ -127,29 +127,30 @@ function Cart({ cartProducts, setCartProducts }) {
                     return (
                       <tr key={product.id}>
                         {/* 1. PRODUCT INFORMATION*/}
-                        <td style={{ display: "flex" }}>
-                          <img
-                            style={{
-                              maxHeight: "95px",
-                              display: "block",
-                              margin: "0 auto;",
-                            }}
-                            src={product.image}
-                            alt={product.name}
-                          />
-                          <div>
-                            <div>{product.name}</div>
-                            <div>{size}</div>
-
+                        <div style={{ display: "flex" }}>
+                          <td style={{ display: "flex", flex: 1, gap: "5px" }}>
+                            <img
+                              style={{
+                                maxHeight: "95px",
+                                display: "block",
+                                margin: "0 auto;",
+                              }}
+                              src={product.image}
+                              alt={product.name}
+                            />
                             <div>
-                              <div onClick={() => handleRemove(product.id)}>
-                                Remove
-                                <AiOutlineDelete />
+                              <div>{product.name}</div>
+                              <div>{size}</div>
+
+                              <div>
+                                <div onClick={() => handleRemove(product.id)}>
+                                  Remove
+                                  <AiOutlineDelete />
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </td>
-
+                          </td>
+                        </div>
                         {/* 2. QUANTITY */}
                         <td>
                           <ButtonFrame>
@@ -176,7 +177,7 @@ function Cart({ cartProducts, setCartProducts }) {
                   return null;
                 })}
               </tbody>
-            </Table>
+            </table>
 
             {/* CART TOTAL BOTTOM */}
             <div

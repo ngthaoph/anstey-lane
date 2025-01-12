@@ -20,6 +20,7 @@ export const ulFilter = style({
   flexWrap: "wrap",
 
   borderTop: "solid",
+  borderBottom: "solid",
 
   margin: "0px 20px",
   padding: " 0",
@@ -57,7 +58,7 @@ export const liFilter = style({
 
   selectors: {
     "&.active": {
-      borderTop: "2px solid #661a34",
+      borderTop: "2px solid #7a5c7a",
       backgroundColor: vars.colors.brandDark,
     },
   },
@@ -69,17 +70,9 @@ export const liFilter = style({
       marginRight: "9px",
       marginBottom: "11px",
       borderRight: "none",
-
-      ":hover": {
-        borderTop: "2px solid #661a34",
-        color: "beige",
-        backgroundColor: "#661a34",
-      },
       selectors: {
         "&.active": {
-          borderTop: "2px solid #661a34",
-          color: "pink",
-          backgroundColor: vars.colors.brandDark,
+          borderTop: "2px solid ",
         },
       },
     },
@@ -94,12 +87,12 @@ export const aLink = style({
   textDecoration: "none",
   ":hover": {
     backgroundColor: vars.colors.brand,
-    color: "seashell",
+    color: vars.colors.primary,
   },
   selectors: {
     "&.active": {
       color: vars.colors.primary,
-      backgroundColor: vars.colors.brandDark,
+      backgroundColor: vars.colors.brand,
     },
   },
 
@@ -107,6 +100,14 @@ export const aLink = style({
     "screen and (max-width: 768px)": {
       padding: "8px",
       border: "1px solid #2b2c30",
+
+      fontSize: "15px",
+      letterSpacing: ".9px",
+      fontWeight: vars.fontWeights.bold,
+      ":hover": {
+        backgroundColor: vars.colors.brand,
+        color: "white",
+      },
       selectors: {
         "&.active": {
           color: "white",

@@ -12,11 +12,12 @@ export const root = createGlobalTheme(":root", {
     // Semantic tokens
     primary: "#f2f0f3", //background color
     complementary: "#39183a", //footer header
-    brand: "#612e58", //bold font
+    brand: "#3e2a41", //bold font
     brandLight: "#d6c9d8",
     brandDark: "#7a5c7a",
     buttonLight: "#d6c9d8",
     buttonDark: "#7a5c7a",
+    fontHover: "#fbf9fb",
 
     // Color tokens
     success: twColors.green[400],
