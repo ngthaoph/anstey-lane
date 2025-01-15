@@ -86,13 +86,13 @@ export const aLink = style({
   color: "#2b2c30",
   textDecoration: "none",
   ":hover": {
-    backgroundColor: vars.colors.brand,
+    backgroundColor: "#ff9298",
     color: vars.colors.primary,
   },
   selectors: {
     "&.active": {
-      color: vars.colors.primary,
-      backgroundColor: vars.colors.brand,
+      color: vars.colors.brand,
+      backgroundColor: "#ff9298",
     },
   },
 

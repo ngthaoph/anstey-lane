@@ -135,7 +135,9 @@ function ProductForm({
             </ButtonFrame>
           </div>
         </div>
-        <AlButton type="submit">{isLoading ? "Add to Cart" : "Added"}</AlButton>
+        <AlButton type="submit" active={isLoading ? "" : "active"}>
+          {isLoading ? "Add to Cart" : "Added"}
+        </AlButton>
       </form>
     </div>
   );

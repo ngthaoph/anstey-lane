@@ -15,10 +15,11 @@ import cart from "../../assets/cart.svg";
 
 const Header = ({ cartProducts }) => {
   const { user, logout } = useAuth();
-  const quantity = cartProducts
-    .map((element) => element.quantity)
-    .reduce((element, acc) => (acc = element + acc));
-  console.log(quantity);
+
+  const quantity = cartProducts?.map((element) => element.quantity);
+  if (quantity === undefined) return null;
+  const totalQuantity =
+    quantity?.length > 0 ? quantity?.reduce((a, b) => a + b) : null;
 
   return (
     <>
@@ -75,7 +76,9 @@ const Header = ({ cartProducts }) => {
                   <img src={cart} />
 
                   {/**CART COUNT */}
-                  <div className={styles.cartCount}>{quantity}</div>
+                  {quantity && (
+                    <div className={styles.cartCount}>{totalQuantity}</div>
+                  )}
                 </div>
               </Nav.Link>
             </Nav>
