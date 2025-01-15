@@ -18,9 +18,9 @@ import ShopOptionsFilter from "./ShopOptionsFilter";
 import AlButton from "../../components/common/AlButton";
 
 function ProductsPage() {
-  // PRODUCTS STATEs
-
+  //PRODUCT MENU
   const [selectedCategory, setSelectedCategory] = useState("all");
+  console.log(selectedCategory);
   const handleSelectedCategory = (category) => {
     console.log(category);
     setSelectedCategory(category);
@@ -34,9 +34,6 @@ function ProductsPage() {
       selectedCategory === "all" ? "" : `/${selectedCategory}`
     }`;
     const response = await productService.getAll(category);
-
-    // const response = await productService.getProducts(category);
-    // console.log(response.data);
 
     return response.data;
   };

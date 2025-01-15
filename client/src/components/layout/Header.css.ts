@@ -52,5 +52,5 @@ export const brandLink = style({
 export const cartCount = style({
   position: "sticky",
 
-  fontSize: "14px",
+  fontSize: "13px",
 });

@@ -24,6 +24,7 @@ export const cartContainerLink = style({
   textDecorationColor: vars.colors.brandDark,
 
   fontFamily: vars.fonts.bold,
+  color: vars.colors.brand,
 });
 
 export const tableHeader = style({

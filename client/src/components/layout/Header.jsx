@@ -11,7 +11,7 @@ import logoImg from "../../assets/images/anstey-lane.png";
 import home from "../../assets/images/home.jpg";
 import useAuth from "../../hooks/useAuth";
 import { VscAccount } from "react-icons/vsc";
-import shoppingCart from "../../assets/shoppingCart.svg";
+import cart from "../../assets/cart.svg";
 
 const Header = ({ cartProducts }) => {
   const { user, logout } = useAuth();
@@ -72,7 +72,8 @@ const Header = ({ cartProducts }) => {
 
               <Nav.Link className={styles.navLink} as={Link} to="/cart">
                 <div style={{ display: "flex", flex: 1 }}>
-                  <img src={shoppingCart} />
+                  <img src={cart} />
+
                   {/**CART COUNT */}
                   <div className={styles.cartCount}>{quantity}</div>
                 </div>
