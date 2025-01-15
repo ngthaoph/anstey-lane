@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import * as styles from "./Cart.css";
 import { useQueries } from "@tanstack/react-query";
-import axios from "axios";
-import Table from "react-bootstrap/Table";
+
 import FreeShipping from "./FreeShipping";
 import productService from "../../../services/productService.js";
 import { FaPlus, FaMinus } from "react-icons/fa";
@@ -78,11 +77,11 @@ function Cart({ cartProducts, setCartProducts }) {
   return (
     <div className={styles.container}>
       {/* CART HEADER */}
-      <div>
-        <h1 className={styles.cartContainerH1}>Your Cart</h1>
-        <a className={styles.cartContainerLink} href="/store/products">
+      <div className={styles.container}>
+        <div className={styles.cartContainerH1}>Your Cart</div>
+        <div className={styles.cartContainerLink} href="/store/products">
           Continue Shopping
-        </a>
+        </div>
       </div>
       {subtotal < 150 && (
         <div>
@@ -91,28 +90,28 @@ function Cart({ cartProducts, setCartProducts }) {
       )}
 
       {/* CART INFORMATION */}
-      <div>
-        {cartProducts.length > 0 ? (
-          <form>
-            <table>
+
+      {cartProducts.length > 0 ? (
+        <form style={{ display: "flex" }}>
+          <div
+            style={{
+              display: "flex",
+              flex: 1,
+              flexDirection: "column",
+              gap: "30px",
+              padding: "20px 20px",
+            }}
+          >
+            <table style={{ width: "100%", borderCollapse: "collapse" }}>
               <thead>
-                <tr
-                  style={{
-                    fontSize: "19px",
-                    lineHeight: "1.4737",
-                    textTransform: "inherit",
-                    borderBottom: "1px solid #2b2c30",
-                    padding: "18px 18px",
-                    textAlign: "left",
-                  }}
-                >
-                  <th>Product</th>
-                  <th>Quantity</th>
-                  <th>Price</th>
-                  <th>Total</th>
+                <tr>
+                  <th className={styles.tableHeader}>Product</th>
+                  <th className={styles.tableHeader}>Quantity</th>
+                  <th className={styles.tableHeader}>Price</th>
+                  <th className={styles.tableHeader}>Total</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody style={{ padding: "10px 10px" }}>
                 {queries.map((query, index) => {
                   const product = query.data;
 
@@ -193,9 +192,7 @@ function Cart({ cartProducts, setCartProducts }) {
                 style={{ display: "flex", flex: 1, flexDirection: "column" }}
               >
                 <label>Add a note to your order</label>
-                <textarea
-                  style={{ width: "300px", height: "100px" }}
-                ></textarea>
+                <textarea className={styles.orderNote}></textarea>
               </div>
               <div
                 style={{
@@ -218,11 +215,11 @@ function Cart({ cartProducts, setCartProducts }) {
                 </p>
               </div>
             </div>
-          </form>
-        ) : (
-          <div>Your cart is empty</div>
-        )}
-      </div>
+          </div>
+        </form>
+      ) : (
+        <div>Your cart is empty</div>
+      )}
     </div>
   );
 }

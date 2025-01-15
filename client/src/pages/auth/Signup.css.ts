@@ -7,7 +7,59 @@ export const container = style({
   display: "flex",
   flexDirection: "column",
 });
+export const mainContainer = style({
+  display: "flex",
 
+  flexDirection: "row",
+
+  alignContent: "stretch",
+
+  flex: 1,
+  "@media": {
+    // For mobile screens, stack cards vertically
+    "screen and (max-width: 768px)": {
+      flexDirection: "column",
+      alignItems: "center",
+      overflowX: "hidden",
+    },
+  },
+});
+
+export const halfContainer = style({
+  width: "50%",
+
+  maxWidth: "50%",
+  display: "flex",
+  flex: 1,
+  alignItems: "center",
+  justifyContent: "center",
+
+  "@media": {
+    // For mobile screens, stack cards vertically
+    "screen and (max-width: 768px)": {
+      width: "100%",
+    },
+  },
+});
+export const image = style({
+  "@media": {
+    // For mobile screens, make images smaller (or adjust the max width)
+    "screen and (max-width: 480px)": {
+      height: "100%",
+      width: "100%",
+    },
+    // For tablet screens, adjust image size
+    "screen and (max-width: 768px)": {
+      height: "100%",
+      width: "100%",
+    },
+    // For desktop screens, keep it at full width
+    "screen and (max-width: 769px)": {
+      height: "100%",
+      width: "100%",
+    },
+  },
+});
 export const leadCard = style({
   background: vars.colors.grey200,
   minWidth: "25w",

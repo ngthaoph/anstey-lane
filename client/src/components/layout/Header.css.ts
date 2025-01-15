@@ -49,3 +49,8 @@ export const brandLink = style({
   color: vars.colors.brandDark,
   textTransform: "uppercase",
 });
+export const cartCount = style({
+  position: "sticky",
+
+  fontSize: "14px",
+});

@@ -4,19 +4,24 @@ import twColors from "tailwindcss/colors";
 export const root = createGlobalTheme(":root", {
   fonts: {
     brand: "Inter",
-    body: "Arial",
-    bold: "Karla",
-    button: "Sriracha",
+    body: "Open Sans",
+    bold: "Roboto Mono",
+    button: "Roboto Mono",
   },
   colors: {
     // Semantic tokens
-    primary: "#f2f0f3", //background color
-    complementary: "#39183a", //footer header
-    brand: "#3e2a41", //bold font
+    primary: "#f0f4f4", //background color "#006d67"
+    complementary: "#006d67", //footer header "#ffabdb"
+    fontLight: "#f1f8fc",
+    fontDark: "#333333",
+    brand: "#333333", //bold font
     brandLight: "#d6c9d8",
     brandDark: "#7a5c7a",
-    buttonLight: "#d6c9d8",
-    buttonDark: "#7a5c7a",
+    buttonLight: "#004c48",
+    buttonDark: "#006d67",
+    buttonText: "#ffffff",
+    buttonHover: "#004c48",
+    buttonActiveText: "#ffabdb",
     fontHover: "#fbf9fb",
 
     // Color tokens

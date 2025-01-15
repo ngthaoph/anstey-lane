@@ -10,10 +10,9 @@ export const buttonFrame = style({
   height: "40px",
   textAlign: "center",
 
-  borderRadius: "34px",
-  color: "white",
-  backgroundColor: vars.colors.brandDark,
-  border: "1px solid #6a7982",
+  color: "black",
+  backgroundColor: "none",
+
   cursor: "pointer",
   textTransform: "uppercase",
   textDecoration: "none",

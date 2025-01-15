@@ -13,7 +13,8 @@ export const catergoryContainer = style({});
 export const resultNumber = style({
   display: "flex",
   justifyContent: "center",
-  fontSize: "30px",
+  fontSize: "17px",
+  color: vars.colors.fontLight,
 });
 
 export const collectionContainer = style({

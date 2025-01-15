@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 import * as styles from "./Layout.css";
 
-const Layout = () => (
+const Layout = ({ cartProducts }) => (
   <div className={styles.app}>
     {/* TOAST is a popup component to display Errors */}
     <ToastContainer
@@ -24,7 +24,7 @@ const Layout = () => (
       theme="colored"
     />
     <div className={styles.mainContent}>
-      <Header />
+      <Header cartProducts={cartProducts} />
       <div className={styles.appContent}>
         <Outlet /> {/* Your page content */}
       </div>

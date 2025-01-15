@@ -60,31 +60,11 @@ function Signup() {
 
   return (
     <div style={{ display: "flex", maxWidth: "100%" }}>
-      <div
-        style={{
-          display: "flex",
-
-          flexDirection: "row",
-
-          alignContent: "stretch",
-
-          flex: 1,
-        }}
-      >
-        <div style={{ maxWidth: "50%" }}>
-          <img src={leftPhoto} alt="left-photo" />
+      <div className={styles.mainContainer}>
+        <div className={styles.halfContainer}>
+          <img src={leftPhoto} alt="left-photo" className={styles.image} />
         </div>
-        <div
-          style={{
-            maxWidth: "50%",
-            display: "flex",
-            flex: 1,
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "2rem",
-            backgroundColor: "#EFF1EE",
-          }}
-        >
+        <div className={styles.halfContainer}>
           <MbCard title="Create Account" authform>
             {/*}
       //TEMPLATE */}

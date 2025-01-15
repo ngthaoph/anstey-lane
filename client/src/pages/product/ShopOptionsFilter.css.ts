@@ -58,7 +58,7 @@ export const liFilter = style({
 
   selectors: {
     "&.active": {
-      borderTop: "2px solid #7a5c7a",
+      borderTop: vars.colors.brandDark,
       backgroundColor: vars.colors.brandDark,
     },
   },
@@ -101,8 +101,8 @@ export const aLink = style({
       padding: "8px",
       border: "1px solid #2b2c30",
 
-      fontSize: "15px",
-      letterSpacing: ".9px",
+      // fontSize: "15px",
+      // letterSpacing: ".9px",
       fontWeight: vars.fontWeights.bold,
       ":hover": {
         backgroundColor: vars.colors.brand,
@@ -110,7 +110,8 @@ export const aLink = style({
       },
       selectors: {
         "&.active": {
-          color: "white",
+          color: vars.colors.primary,
+          backgroundColor: vars.colors.brand,
         },
       },
     },

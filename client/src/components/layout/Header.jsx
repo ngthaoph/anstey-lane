@@ -13,8 +13,13 @@ import useAuth from "../../hooks/useAuth";
 import { VscAccount } from "react-icons/vsc";
 import shoppingCart from "../../assets/shoppingCart.svg";
 
-const Header = () => {
+const Header = ({ cartProducts }) => {
   const { user, logout } = useAuth();
+  const quantity = cartProducts
+    .map((element) => element.quantity)
+    .reduce((element, acc) => (acc = element + acc));
+  console.log(quantity);
+
   return (
     <>
       <Disclaimer />
@@ -66,7 +71,11 @@ const Header = () => {
               {user && <AlButton onClick={() => logout()}>Log out</AlButton>}
 
               <Nav.Link className={styles.navLink} as={Link} to="/cart">
-                <img src={shoppingCart} />
+                <div style={{ display: "flex", flex: 1 }}>
+                  <img src={shoppingCart} />
+                  {/**CART COUNT */}
+                  <div className={styles.cartCount}>{quantity}</div>
+                </div>
               </Nav.Link>
             </Nav>
           </Navbar.Collapse>
