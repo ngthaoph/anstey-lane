@@ -26,12 +26,6 @@ export const cartContainerLink = style({
   fontFamily: vars.fonts.bold,
 });
 
-export const cartBold = style({
-  fontFamily: vars.fonts.bold,
-  fontWeight: vars.fontWeights.bold,
-  color: vars.colors.brandDark,
-});
-
 export const tableHeader = style({
   fontSize: "19px",
   lineHeight: "1.4737",
@@ -39,9 +33,4 @@ export const tableHeader = style({
   borderBottom: "1px solid #2b2c30",
   padding: "18px 18px",
   textAlign: "left",
-});
-
-export const orderNote = style({
-  width: "300px",
-  height: "100px",
 });

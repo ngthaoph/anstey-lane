@@ -4,9 +4,9 @@ import { useQueries } from "@tanstack/react-query";
 
 import FreeShipping from "./FreeShipping";
 import productService from "../../../services/productService.js";
-import { FaPlus, FaMinus } from "react-icons/fa";
-import { AiOutlineDelete } from "react-icons/ai";
-import ButtonFrame from "../../common/ButtonFrame";
+
+import CartBottom from "./CartBottom";
+import CartTable from "./CartTable";
 
 // Fetch product data by ID
 const fetchProduct = async (id) => {
@@ -54,11 +54,10 @@ function Cart({ cartProducts, setCartProducts }) {
         };
       } else return item;
     });
-    console.log(results);
+
     setCartProducts(results);
   };
 
-  console.log(cartProducts);
   const subtotal = calculateTotalPrice(queries).reduce((a, b) => a + b, 0);
 
   // Check if any queries are loading or if there are any errors
@@ -79,9 +78,9 @@ function Cart({ cartProducts, setCartProducts }) {
       {/* CART HEADER */}
       <div className={styles.container}>
         <div className={styles.cartContainerH1}>Your Cart</div>
-        <div className={styles.cartContainerLink} href="/store/products">
+        <a className={styles.cartContainerLink} href="/store/products">
           Continue Shopping
-        </div>
+        </a>
       </div>
       {subtotal < 150 && (
         <div>
@@ -102,119 +101,18 @@ function Cart({ cartProducts, setCartProducts }) {
               padding: "20px 20px",
             }}
           >
-            <table style={{ width: "100%", borderCollapse: "collapse" }}>
-              <thead>
-                <tr>
-                  <th className={styles.tableHeader}>Product</th>
-                  <th className={styles.tableHeader}>Quantity</th>
-                  <th className={styles.tableHeader}>Price</th>
-                  <th className={styles.tableHeader}>Total</th>
-                </tr>
-              </thead>
-              <tbody style={{ padding: "10px 10px" }}>
-                {queries.map((query, index) => {
-                  const product = query.data;
-
-                  if (product) {
-                    const cartProduct = cartProducts[index];
-                    const size = cartProducts[index].size;
-                    const totalPrice =
-                      size === "250g"
-                        ? product.price * cartProduct.quantity
-                        : product.price * 4 * cartProduct.quantity;
-
-                    return (
-                      <tr key={product.id}>
-                        {/* 1. PRODUCT INFORMATION*/}
-                        <div style={{ display: "flex" }}>
-                          <td style={{ display: "flex", flex: 1, gap: "5px" }}>
-                            <img
-                              style={{
-                                maxHeight: "95px",
-                                display: "block",
-                                margin: "0 auto;",
-                              }}
-                              src={product.image}
-                              alt={product.name}
-                            />
-                            <div>
-                              <div>{product.name}</div>
-                              <div>{size}</div>
-
-                              <div>
-                                <div onClick={() => handleRemove(product.id)}>
-                                  Remove
-                                  <AiOutlineDelete />
-                                </div>
-                              </div>
-                            </div>
-                          </td>
-                        </div>
-                        {/* 2. QUANTITY */}
-                        <td>
-                          <ButtonFrame>
-                            <div
-                              type="button"
-                              onClick={() => updateQuantity(product.id, 1)}
-                            >
-                              <FaPlus />
-                            </div>
-                            <div>{cartProduct.quantity}</div>
-                            <div onClick={() => updateQuantity(product.id, -1)}>
-                              <FaMinus />
-                            </div>
-                          </ButtonFrame>
-                        </td>
-                        {/* 3. QUANTITY */}
-
-                        <td>${product.price}</td>
-                        {/* */}
-                        <td>${totalPrice}</td>
-                      </tr>
-                    );
-                  }
-                  return null;
-                })}
-              </tbody>
-            </table>
+            <CartTable
+              queries={queries}
+              cartProducts={cartProducts}
+              handleRemove={handleRemove}
+              updateQuantity={updateQuantity}
+            />
 
             {/* CART TOTAL BOTTOM */}
-            <div
-              style={{
-                display: "flex",
-                flex: 1,
-
-                flexDirection: "row",
-                alignItems: "flex-start",
-              }}
-            >
-              <div
-                style={{ display: "flex", flex: 1, flexDirection: "column" }}
-              >
-                <label>Add a note to your order</label>
-                <textarea className={styles.orderNote}></textarea>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flex: 1,
-
-                  flexDirection: "column",
-                  alignItems: "flex-end",
-                }}
-              >
-                <p className={styles.cartBold}>
-                  SUBTOTAL BEFORE DELIVERY: ${subtotal}
-                </p>
-
-                <p className={styles.cartBold}>
-                  TOTAL PRICE: ${" "}
-                  {subtotal > 150
-                    ? subtotal
-                    : (priceWithDelivery = subtotal + 15)}
-                </p>
-              </div>
-            </div>
+            <CartBottom
+              subtotal={subtotal}
+              priceWithDelivery={priceWithDelivery}
+            />
           </div>
         </form>
       ) : (
