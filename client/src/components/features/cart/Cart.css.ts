@@ -22,6 +22,7 @@ export const cartContainerLink = style({
   cursor: "pointer",
   textDecoration: "none",
   textDecorationColor: vars.colors.brandDark,
+  alignContent: "center",
 
   fontFamily: vars.fonts.bold,
   color: vars.colors.brand,

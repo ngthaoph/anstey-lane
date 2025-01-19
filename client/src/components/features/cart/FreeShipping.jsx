@@ -1,8 +1,13 @@
 import React from "react";
 import * as styles from "./FreeShipping.css";
+import { FaShippingFast } from "react-icons/fa";
 
 function FreeShipping({ subtotal }) {
   const remainingForFreeShipping = 150 - subtotal;
+  const percentage = (remainingForFreeShipping / 150) * 100;
+  const getIconPosition = (position) => {
+    return `${(position / 150) * 100}`;
+  };
   return (
     <div className={styles.container}>
       <div className={styles.shippingContainer}>

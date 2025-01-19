@@ -7,7 +7,12 @@ import ButtonFrame from "../../common/ButtonFrame";
 function CartTable({ queries, cartProducts, handleRemove, updateQuantity }) {
   return (
     <div>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
+      <table
+        style={{
+          width: "100%",
+          borderCollapse: "collapse",
+        }}
+      >
         <thead>
           <tr>
             <th className={styles.tableHeader}>Product</th>
@@ -16,7 +21,7 @@ function CartTable({ queries, cartProducts, handleRemove, updateQuantity }) {
             <th className={styles.tableHeader}>Total</th>
           </tr>
         </thead>
-        <tbody style={{ padding: "10px 10px" }}>
+        <tbody>
           {queries.map((query, index) => {
             const product = query.data;
 

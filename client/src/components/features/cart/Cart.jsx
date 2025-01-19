@@ -78,9 +78,6 @@ function Cart({ cartProducts, setCartProducts }) {
       {/* CART HEADER */}
       <div className={styles.container}>
         <div className={styles.cartContainerH1}>Your Cart</div>
-        <a className={styles.cartContainerLink} href="/store/products">
-          Continue Shopping
-        </a>
       </div>
       {subtotal < 150 && (
         <div>
