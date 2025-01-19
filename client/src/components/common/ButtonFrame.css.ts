@@ -20,7 +20,7 @@ export const buttonFrame = style({
   minHeight: "40px",
   width: "170px",
   display: "flex",
-  justifyContent: "center",
+
   alignItems: "center",
 });
 
