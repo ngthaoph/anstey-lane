@@ -74,6 +74,7 @@ function Cart({ cartProducts, setCartProducts }) {
   }
 
   return (
+    
     <div className={styles.container}>
       {/* CART HEADER */}
       <div className={styles.container}>
