@@ -25,12 +25,13 @@ const Layout = ({ cartProducts }) => (
     />
     <div className={styles.mainContent}>
       <Header cartProducts={cartProducts} />
-      <div className={styles.appContent}>
-        <Outlet /> {/* Your page content */}
-      </div>
-      <Footer />
     </div>
+
+    <div className={styles.appContent}>
+      <Outlet />
+    </div>
+
+    <Footer />
   </div>
 );
-
 export default Layout;

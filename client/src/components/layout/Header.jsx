@@ -1,17 +1,15 @@
 // Import Bootstrap modules
 import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import { Navbar, Nav } from "react-bootstrap";
+
+import Navbar from "./Navbar";
 
 import * as styles from "./Header.css";
 import AlButton from "../common/AlButton";
 
 import Disclaimer from "./Disclaimer";
-import logoImg from "../../assets/images/anstey-lane.png";
-import home from "../../assets/images/home.jpg";
+
 import useAuth from "../../hooks/useAuth";
-import { VscAccount } from "react-icons/vsc";
-import cart from "../../assets/cart.svg";
 
 const Header = ({ cartProducts }) => {
   const { user, logout } = useAuth();
@@ -24,8 +22,19 @@ const Header = ({ cartProducts }) => {
   return (
     <>
       <Disclaimer />
-
       <Navbar
+        cartProducts={cartProducts}
+        totalQuantity={totalQuantity}
+        quantity={quantity}
+      />
+    </>
+  );
+};
+
+export default Header;
+
+/**
+ *   <Navbar
         className={styles.navbar}
         variant="light"
         expand="lg"
@@ -37,7 +46,7 @@ const Header = ({ cartProducts }) => {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            {/* LEFT - STD NAVLINKS */}
+            {/* LEFT - STD NAVLINKS 
             <Nav className="me-auto">
               <Nav.Link className={styles.navLink} as={Link} to="/about">
                 About
@@ -51,7 +60,7 @@ const Header = ({ cartProducts }) => {
                 Products
               </Nav.Link>
             </Nav>
-            {/* RIGHT - AUTH NAVLINKS */}
+            {/* RIGHT - AUTH NAVLINKS 
             <Nav>
               {!user && (
                 <Nav.Link className={styles.navLink} as={Link} to="/signup">
@@ -75,7 +84,7 @@ const Header = ({ cartProducts }) => {
                 <div style={{ display: "flex", flex: 1 }}>
                   <img src={cart} />
 
-                  {/**CART COUNT */}
+                  {/**CART COUNT *
                   {quantity && (
                     <div className={styles.cartCount}>{totalQuantity}</div>
                   )}
@@ -85,8 +94,4 @@ const Header = ({ cartProducts }) => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-    </>
-  );
-};
-
-export default Header;
+ */

@@ -65,70 +65,71 @@ function Signup() {
           <img src={leftPhoto} alt="left-photo" className={styles.image} />
         </div>
         <div className={styles.halfContainer}>
-          <MbCard title="Create Account" authform>
-            {/*}
+          <div>
+            <MbCard title="Create Account" authform>
+              {/*}
       //TEMPLATE */}
-            <Form onSubmit={handleSubmit}>
-              {/* 1. username */}
-              <Form.Group className="mb-3" controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder=""
-                  name="username"
-                  onChange={handleTextChange}
-                  value={username}
-                />
-              </Form.Group>
+              <Form onSubmit={handleSubmit}>
+                {/* 1. username */}
+                <Form.Group className="mb-3" controlId="username">
+                  <Form.Label>Username</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder=""
+                    name="username"
+                    onChange={handleTextChange}
+                    value={username}
+                  />
+                </Form.Group>
 
-              {/* 2. email */}
-              <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder=""
-                  name="email"
-                  onChange={handleTextChange}
-                  value={email}
-                />
-              </Form.Group>
+                {/* 2. email */}
+                <Form.Group className="mb-3" controlId="email">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder=""
+                    name="email"
+                    onChange={handleTextChange}
+                    value={email}
+                  />
+                </Form.Group>
 
-              {/* 3. password */}
-              <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder=""
-                  name="password"
-                  onChange={handleTextChange}
-                  value={password}
-                />
-              </Form.Group>
+                {/* 3. password */}
+                <Form.Group className="mb-3" controlId="password">
+                  <Form.Label>Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder=""
+                    name="password"
+                    onChange={handleTextChange}
+                    value={password}
+                  />
+                </Form.Group>
 
-              {/* 4. password confirm */}
-              <Form.Group className="mb-3" controlId="password-confirm">
-                <Form.Label>Confirm Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder=""
-                  ref={passwordConfirmRef}
-                />
-              </Form.Group>
+                {/* 4. password confirm */}
+                <Form.Group className="mb-3" controlId="password-confirm">
+                  <Form.Label>Confirm Password</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder=""
+                    ref={passwordConfirmRef}
+                  />
+                </Form.Group>
 
-              {/* 5. submit btn */}
-              <AlButton type="submit">
-                {loading ? "Loading..." : "Create"}
-              </AlButton>
-            </Form>
-            <div>
-              <span>
-                Already a member?
-                <div>
-                  <Link to="/login">Login here</Link>
-                </div>
-              </span>
+                {/* 5. submit btn */}
+                <AlButton type="submit">
+                  {loading ? "Loading..." : "Create"}
+                </AlButton>
+              </Form>
+            </MbCard>
+            <div style={{ textAlign: "center" }}>
+              <div>Already a member?</div>
+
+              <Link to="/login">
+                <AlButton>Login here</AlButton>
+              </Link>
             </div>
-          </MbCard>
+          </div>
         </div>
       </div>
     </div>

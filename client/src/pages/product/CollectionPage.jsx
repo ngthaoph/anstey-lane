@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../hooks/useAuth";
-import ProductsList from "../../components/features/products/ProductsList";
+
 import { Container, Card, Col, Row } from "react-bootstrap";
 import axios from "axios";
 //import productService from "../../services/productService";
@@ -17,7 +17,13 @@ import productService from "../../services/productService";
 import ShopOptionsFilter from "./ShopOptionsFilter";
 import AlButton from "../../components/common/AlButton";
 
-function ProductsPage() {
+function ProductsPage({ limit = false }) {
+  //display 5 products
+  const [showAllProducts, setShowAllProducts] = useState(false);
+  const handleShowAllProducts = () => {
+    setShowAllProducts(!showAllProducts);
+  };
+
   //PRODUCT MENU
   const [selectedCategory, setSelectedCategory] = useState("all");
   console.log(selectedCategory);
@@ -47,6 +53,7 @@ function ProductsPage() {
     queryKey: ["products", selectedCategory],
     queryFn: () => fetchProducts(selectedCategory),
   });
+
   if (isLoading) {
     return (
       <div
@@ -64,56 +71,56 @@ function ProductsPage() {
   }
   if (isError === true) {
     return (
-      <div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <p>Error loading page ...</p>
         <Link to="/">Return to Home page</Link>
       </div>
     );
   }
-
+  const displayedProducts = limit ? products.slice(0, limit) : products;
+  console.log("displayedProducts:", displayedProducts);
   return (
     <div className={styles.container}>
-      <ShopOptionsFilter
-        baseOptions={["all", "espresso", "decaf", "filter", "sale"]}
-        selectedCategory={selectedCategory}
-        handleSelectedCategory={handleSelectedCategory}
-      />
+      {!limit && (
+        <ShopOptionsFilter
+          baseOptions={["all", "espresso", "decaf", "filter", "sale"]}
+          selectedCategory={selectedCategory}
+          handleSelectedCategory={handleSelectedCategory}
+        />
+      )}
       {logInSaveUser && (
         <AlButton onClick={() => navigate("/store/product")}>
           Add Product
         </AlButton>
       )}
 
-      <div className={styles.resultNumber}>
-        <span>SHOWING {products.length} RESULTS</span>
-      </div>
-
       {isLoading ? (
         <div style={{ flex: 1, alignItems: "center" }}>
-          <Dots color1="#fbf9fb" />
+          <Dots />
         </div>
       ) : (
         <Container className={styles.collectionContainer}>
           <div
             style={{
               display: "flex",
-
-              flex: "1 1 auto",
-              flexDirection: "row",
               flexWrap: "wrap",
-              alignItems: "center",
+
               padding: "20px 20px",
               justifyContent: "center",
               gap: "20px",
             }}
           >
-            {products.map((product) => (
+            {/* <div className={styles.resultNumber}>
+              <span>SHOWING {products.length} RESULTS</span>
+            </div> */}
+            {/*products.map*/}
+            {displayedProducts?.map((product) => (
               <Link
                 style={{
                   textDecoration: "none",
                 }}
                 key={product.id}
-                to={`/store/products/product/${product.id}`}
+                to={`/${product.id}`}
               >
                 <div style={{ padding: "10px" }}>
                   <AlProductCard
@@ -122,11 +129,19 @@ function ProductsPage() {
                     price={product.price}
                     image={product.image}
                     base={product.base}
+                    button={!limit && true}
                   />
                 </div>
               </Link>
             ))}
           </div>
+          {limit && (
+            <div className={styles.seeMoreButton}>
+              <AlButton onClick={() => navigate("/collection")}>
+                Explore our full range
+              </AlButton>
+            </div>
+          )}
         </Container>
       )}
     </div>

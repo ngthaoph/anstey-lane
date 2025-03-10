@@ -3,12 +3,13 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Import pages
-import Home from "./pages/Home";
+
 import CollectionPage from "./pages/product/CollectionPage";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 import Product from "./pages/product/Product";
 import Cart from "./components/features/cart/Cart";
+import HomePage from "./components/layout/HomePage";
 
 // Import components
 import Layout from "./components/layout/Layout";
@@ -60,7 +61,24 @@ function App() {
             />
           }
         >
-          <Route index element={<Home />} />
+          {/* PRODUCTS 
+        store/products; 
+        store/products/clearance*/}
+
+          <Route path="/" element={<HomePage />} />
+          <Route path="/collection" element={<CollectionPage />}></Route>
+
+          <Route
+            path=":id"
+            element={<Product handleNewCart={handleNewCart} />}
+          />
+
+          <Route element={<PrivateRoutes />}>
+            <Route path="/store/product" element={<AddProduct />} />
+            <Route path="/store/product/edit/:id" element={<EditProduct />} />
+          </Route>
+
+          {/** */}
           <Route path="/about" element={<About />} />
           {/* AUTH */}
           <Route path="signup" element={<Signup />} />
@@ -81,21 +99,6 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
           </Route>
 
-          {/* PRODUCTS 
-        store/products; 
-        store/products/clearance*/}
-          <Route path="/store">
-            <Route path="/store/products" element={<CollectionPage />} />
-            <Route
-              path={"/store/products/product/:id"}
-              element={<Product handleNewCart={handleNewCart} />}
-            />
-            <Route element={<PrivateRoutes />}>
-              <Route path="/store/product" element={<AddProduct />} />
-              <Route path="/store/product/edit/:id" element={<EditProduct />} />
-            </Route>
-          </Route>
-
           {/* ERROR PAGES */}
           <Route path="*" element={<NotFound />} />
         </Route>
@@ -105,3 +108,15 @@ function App() {
 }
 
 export default App;
+
+//  <Route path="/store">
+//    <Route path="/store/products" element={<CollectionPage />} />
+//    <Route
+//      path={"/store/products/product/:id"}
+//      element={<Product handleNewCart={handleNewCart} />}
+//    />
+//    <Route element={<PrivateRoutes />}>
+//      <Route path="/store/product" element={<AddProduct />} />
+//      <Route path="/store/product/edit/:id" element={<EditProduct />} />
+//    </Route>
+//  </Route>;

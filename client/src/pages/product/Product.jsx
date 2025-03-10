@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import AlCard from "../../components/common/AlCard";
+
 import AlProductCard from "../../components/common/AlProductCard";
 import AlButton from "../../components/common/AlButton";
 
@@ -84,20 +83,20 @@ function Product({ handleNewCart }) {
       <div className={styles.productWrapper}>
         {/*BASE INFO - GO BACK TAB*/}
         <div className={styles.goBackTab}>
-          <Link
+          <div
             style={{
               textDecoration: "none",
               display: "flex",
               color: "inherit",
             }}
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/collection")}
           >
             <div>
               <MdOutlineKeyboardArrowLeft />
             </div>
 
             <p>{capitalizeAllLetter(data.base)}</p>
-          </Link>
+          </div>
         </div>
         {/*Product name */}
         <h1>{capitalizeFirstLetter(data.name)}</h1>

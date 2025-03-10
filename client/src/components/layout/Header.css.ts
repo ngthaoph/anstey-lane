@@ -7,6 +7,7 @@ export const navbar = style({
   padding: `${vars.space["3x"]} 0`,
   boxShadow: "rgba(0, 0, 0, 0.05) 0px 1px 2px 0px",
   transition: "background 0.2s ease-in, color 0.2s ease-in",
+  flexDirection: "row",
 });
 export const logo = style({
   width: 170,

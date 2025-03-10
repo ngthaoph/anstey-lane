@@ -19,10 +19,21 @@ export const resultNumber = style({
 
 export const collectionContainer = style({
   display: "flex",
+  flexDirection: "column",
+  flex: 1,
 
   padding: "20px 20px",
 
   boxSizing: "border-box",
-  flexWrap: "wrap",
+
   maxWidth: "100%",
+});
+
+export const seeMoreButton = style({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: "10px",
+  marginTop: "20px",
+  marginBottom: "20px",
 });

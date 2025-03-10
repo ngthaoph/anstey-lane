@@ -11,6 +11,7 @@ export const root = createGlobalTheme(":root", {
   colors: {
     // Semantic tokens
     primary: "#f0f4f4", //background color "#006d67"
+    secondary: "#b65388",
     complementary: "#006d67", //footer header "#ffabdb"
     fontLight: "#f1f8fc",
     fontDark: "#333333",

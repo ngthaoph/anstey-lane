@@ -9,4 +9,5 @@ export const footer = style({
   backgroundColor: vars.colors.complementary,
   fontSize: vars.fontSizes["11x"],
   flex: "none",
+  position: "sticky",
 });
