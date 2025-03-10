@@ -33,14 +33,10 @@ function Navbar({ cartProducts, totalQuantity, quantity }) {
               </>
             ) : (
               /** SHOW "SIGN UP" AND "LOGIN" LINKS IF USER IS NOT LOGGED IN */
-              <>
-                <Nav.Link as={Link} to="/signup">
-                  <VscAccount /> Sign Up
-                </Nav.Link>
-                <Nav.Link as={Link} to="/login">
-                  <VscAccount /> Log In
-                </Nav.Link>
-              </>
+
+              <Nav.Link as={Link} to="/login">
+                <VscAccount />
+              </Nav.Link>
             )}
             <Nav.Link as={Link} to="/cart">
               <div style={{ display: "flex", flex: 1 }}>
