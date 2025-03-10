@@ -43,6 +43,8 @@ export const headerRightContainer = style({
   fontWeight: vars.fontWeights.bold,
   alignContent: "center",
   gap: vars.gap["3x"],
+  fontFamily: vars.fonts.button,
+  color: vars.colors.fontLight,
 });
 
 export const logoContainer = style({

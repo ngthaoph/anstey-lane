@@ -7,6 +7,7 @@ import useAuth from "../../hooks/useAuth";
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 import { capitalizeFirstLetter } from "../../utils/readUtils";
+import AlButton from "../common/AlButton";
 
 function Navbar({ cartProducts, totalQuantity, quantity }) {
   const { user, logout } = useAuth();
@@ -35,7 +36,7 @@ function Navbar({ cartProducts, totalQuantity, quantity }) {
               /** SHOW "SIGN UP" AND "LOGIN" LINKS IF USER IS NOT LOGGED IN */
 
               <Nav.Link as={Link} to="/login">
-                <VscAccount />
+                <span>Log In</span>
               </Nav.Link>
             )}
             <Nav.Link as={Link} to="/cart">

@@ -34,5 +34,6 @@ AlButton.propTypes = {
   type: PropTypes.string,
 
   active: PropTypes.bool,
+  bgColor: PropTypes.string,
 };
 export default AlButton;
